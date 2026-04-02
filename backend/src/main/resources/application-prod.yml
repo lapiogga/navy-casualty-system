@@ -1,0 +1,11 @@
+spring:
+  jpa:
+    show-sql: false
+  session:
+    jdbc:
+      initialize-schema: never
+
+logging:
+  level:
+    com.navy.casualty: WARN
+    org.springframework: WARN

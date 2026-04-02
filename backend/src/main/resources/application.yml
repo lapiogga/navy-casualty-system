@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:navy_casualty}
+    username: ${DB_USERNAME:navy_user}
+    password: ${DB_PASSWORD:navy_pass}
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+        default_batch_fetch_size: 100
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: false
+  session:
+    store-type: jdbc
+    jdbc:
+      initialize-schema: always
+    timeout: 30m
+
+server:
+  port: 8080

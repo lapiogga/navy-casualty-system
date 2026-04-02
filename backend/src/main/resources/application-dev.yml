@@ -1,0 +1,8 @@
+spring:
+  jpa:
+    show-sql: true
+
+logging:
+  level:
+    com.navy.casualty: DEBUG
+    org.springframework.security: DEBUG
