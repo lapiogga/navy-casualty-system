@@ -54,13 +54,13 @@ Plans:
 
 **Goal:** 역할 기반 접근 제어, 세션 인증, 감사 로그 AOP를 완성한다. 보안 기반 없이는 이후 Phase 착수 불가.
 
-**Requirements:** AUTH-01~07, AUDIT-01~07
+**Requirements:** AUTH-01~07, AUDIT-01~06
 
-**Plans:** 4 plans
+**Plans:** 2/4 plans executed
 
 Plans:
-- [ ] 02-01-PLAN.md — Security 인프라 + 인증 API (login/logout/me) + 계정 잠금
-- [ ] 02-02-PLAN.md — PII 암호화 (AES-256-GCM) + 마스킹 유틸 + AOP 감사 로그
+- [x] 02-01-PLAN.md — Security 인프라 + 인증 API (login/logout/me) + 계정 잠금
+- [x] 02-02-PLAN.md — PII 암호화 (AES-256-GCM) + 마스킹 유틸 + AOP 감사 로그
 - [ ] 02-03-PLAN.md — 프론트엔드 인증 (로그인 화면 + 라우트 가드 + 관리자 화면)
 - [ ] 02-04-PLAN.md — 관리자 백엔드 API (사용자 CRUD + 감사 로그 검색)
 
@@ -133,7 +133,7 @@ Plans:
 
 **Goal:** 전공사상심사 정보와 차수별 이력을 관리하고 보훈청 통보를 기록한다.
 
-**Requirements:** REVW-01~08
+**Requirements:** REVW-01~08, AUDIT-07
 
 **Key Deliverables:**
 - 전공사상심사 CRUD REST API
