@@ -30,7 +30,7 @@
 
 Plans:
 - [ ] 01-01-PLAN.md — Spring Boot 백엔드 뼈대 + Flyway 마이그레이션 V1~V9 + 공통 코드
-- [ ] 01-02-PLAN.md — React 프론트엔드 뼈대 + Ant Design Layout + 라우팅
+- [x] 01-02-PLAN.md — React 프론트엔드 뼈대 + Ant Design Layout + 라우팅
 - [ ] 01-03-PLAN.md — Docker Compose 3종 + Dockerfile + 환경변수 템플릿
 
 **Key Deliverables:**
