@@ -1,5 +1,5 @@
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 import { ConfigProvider } from 'antd';
 import koKR from 'antd/locale/ko_KR';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -16,8 +16,8 @@ const queryClient = new QueryClient({
   },
 });
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
     <ConfigProvider
       locale={koKR}
       theme={{
@@ -35,5 +35,5 @@ createRoot(document.getElementById('root')!).render(
         <RouterProvider router={router} />
       </QueryClientProvider>
     </ConfigProvider>
-  </StrictMode>,
+  </React.StrictMode>
 );
