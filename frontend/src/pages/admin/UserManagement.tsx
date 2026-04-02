@@ -15,9 +15,11 @@ interface UserRecord {
   lastLoginAt: string | null;
 }
 
-interface PageResponse {
-  content: UserRecord[];
-  totalElements: number;
+interface ApiResponseWrapper<T> {
+  success: boolean;
+  status: number;
+  message: string;
+  data: T;
 }
 
 interface CreateUserForm {
@@ -36,21 +38,17 @@ const roleOptions: { value: Role; label: string }[] = [
 
 export default function UserManagement() {
   const [data, setData] = useState<UserRecord[]>([]);
-  const [total, setTotal] = useState(0);
   const [current, setCurrent] = useState(1);
   const [pageSize] = useState(10);
   const [loading, setLoading] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [form] = Form.useForm<CreateUserForm>();
 
-  const fetchUsers = useCallback(async (page: number, size: number) => {
+  const fetchUsers = useCallback(async () => {
     setLoading(true);
     try {
-      const res = await apiClient.get<PageResponse>('/admin/users', {
-        params: { page: page - 1, size },
-      });
-      setData(res.data.content);
-      setTotal(res.data.totalElements);
+      const res = await apiClient.get<ApiResponseWrapper<UserRecord[]>>('/admin/users');
+      setData(res.data.data);
     } catch {
       message.error('사용자 목록을 불러오지 못했습니다');
     } finally {
@@ -59,10 +57,10 @@ export default function UserManagement() {
   }, []);
 
   useEffect(() => {
-    fetchUsers(current, pageSize);
-  }, [current, pageSize, fetchUsers]);
+    fetchUsers();
+  }, [fetchUsers]);
 
-  const refresh = () => fetchUsers(current, pageSize);
+  const refresh = () => fetchUsers();
 
   const handleCreate = async (values: CreateUserForm) => {
     try {
@@ -188,7 +186,7 @@ export default function UserManagement() {
         pagination={{
           current,
           pageSize,
-          total,
+          total: data.length,
           onChange: (page) => setCurrent(page),
         }}
       />
