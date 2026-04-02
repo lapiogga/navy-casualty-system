@@ -1,0 +1,16 @@
+# 로컬 개발 전용 설정 (docker compose up 시 자동 적용)
+services:
+  app:
+    build:
+      target: builder
+    volumes:
+      - ./backend/src:/app/src
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
+    ports:
+      - "5005:5005"
+    command: ["java", "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005", "-jar", "app.jar"]
+
+  db:
+    ports:
+      - "${DB_PORT:-5432}:5432"
