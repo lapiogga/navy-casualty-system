@@ -61,8 +61,8 @@ Plans:
 Plans:
 - [x] 02-01-PLAN.md — Security 인프라 + 인증 API (login/logout/me) + 계정 잠금
 - [x] 02-02-PLAN.md — PII 암호화 (AES-256-GCM) + 마스킹 유틸 + AOP 감사 로그
-- [ ] 02-03-PLAN.md — 프론트엔드 인증 (로그인 화면 + 라우트 가드 + 관리자 화면)
-- [ ] 02-04-PLAN.md — 관리자 백엔드 API (사용자 CRUD + 감사 로그 검색)
+- [x] 02-03-PLAN.md — 프론트엔드 인증 (로그인 화면 + 라우트 가드 + 관리자 화면)
+- [x] 02-04-PLAN.md — 관리자 백엔드 API (사용자 CRUD + 감사 로그 검색)
 
 **Key Deliverables:**
 - 로그인/로그아웃 API + 로그인 화면 (Ant Design Form)
