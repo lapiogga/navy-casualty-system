@@ -2,13 +2,13 @@
 
 ## Current Position
 
-**Phase:** 01-project-foundation
-**Current Plan:** 3 of 3
-**Status:** Complete
+**Phase:** 02-rbac
+**Current Plan:** 2 of 4
+**Status:** In Progress
 
 ## Progress
 
-[##########] 100% (3/3 plans complete)
+[####------] 43% (4/7 plans complete)
 
 ## Completed Plans
 
@@ -17,6 +17,7 @@
 | 01 | 01 | 2min | 2 | 28 |
 | 01 | 02 | - | - | - |
 | 01 | 03 | 1min | 1 | 6 |
+| 02 | 01 | 6min | 2 | 17 |
 
 ## Decisions
 
@@ -28,6 +29,10 @@
 - [Phase 01] DB_PASSWORD 필수 설정 강제 (미설정 시 즉시 실패)
 - [Phase 01] 운영 환경 DB 외부 포트 차단
 
+- [Phase 02-rbac] 기존 common/config/SecurityConfig 삭제, security 패키지로 RBAC 완전 교체
+- [Phase 02-rbac] D-02 에러 메시지 통일: 잠금/실패 구분 없이 동일 메시지 반환
+- [Phase 02-rbac] 역할 계층: ADMIN > MANAGER > OPERATOR > VIEWER (RoleHierarchyImpl)
+
 ## Blockers
 
 None
@@ -35,4 +40,4 @@ None
 ## Last Session
 
 - **Timestamp:** 2026-04-02T15:32:35Z
-- **Stopped At:** Completed 01-03-PLAN.md (Phase 01 complete)
+- **Stopped At:** Completed 02-01-PLAN.md
