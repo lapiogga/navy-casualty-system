@@ -31,7 +31,7 @@
 Plans:
 - [x] 01-01-PLAN.md — Spring Boot 백엔드 뼈대 + Flyway 마이그레이션 V1~V9 + 공통 코드
 - [x] 01-02-PLAN.md — React 프론트엔드 뼈대 + Ant Design Layout + 라우팅
-- [ ] 01-03-PLAN.md — Docker Compose 3종 + Dockerfile + 환경변수 템플릿
+- [x] 01-03-PLAN.md — Docker Compose 3종 + Dockerfile + 환경변수 템플릿
 
 **Key Deliverables:**
 - Spring Boot 3.x + Java 21 프로젝트 뼈대 (패키지 구조, 공통 설정)
@@ -56,6 +56,14 @@ Plans:
 
 **Requirements:** AUTH-01~07, AUDIT-01~07
 
+**Plans:** 4 plans
+
+Plans:
+- [ ] 02-01-PLAN.md — Security 인프라 + 인증 API (login/logout/me) + 계정 잠금
+- [ ] 02-02-PLAN.md — PII 암호화 (AES-256-GCM) + 마스킹 유틸 + AOP 감사 로그
+- [ ] 02-03-PLAN.md — 프론트엔드 인증 (로그인 화면 + 라우트 가드 + 관리자 화면)
+- [ ] 02-04-PLAN.md — 관리자 백엔드 API (사용자 CRUD + 감사 로그 검색)
+
 **Key Deliverables:**
 - 로그인/로그아웃 API + 로그인 화면 (Ant Design Form)
 - Spring Security 세션 기반 인증 설정
@@ -71,7 +79,7 @@ Plans:
 
 **Tech Decisions:**
 - `PiiEncryptionConverter` — Hibernate AttributeConverter + AES-256-GCM
-- `AuditLogAspect` — @AfterReturning AOP로 감사 로그 자동 기록
+- `AuditLogAspect` — @Around AOP로 감사 로그 자동 기록
 - `JpaAuditingConfig` — @CreatedBy/@LastModifiedBy 자동 주입
 
 ---
