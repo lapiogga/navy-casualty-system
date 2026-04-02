@@ -4,6 +4,7 @@ import PlaceholderPage from '../components/layout/PlaceholderPage';
 import ErrorPage from '../pages/ErrorPage';
 import NotFoundPage from '../pages/NotFoundPage';
 import LoginPage from '../pages/LoginPage';
+import AdminPage from '../pages/admin/AdminPage';
 import { AuthGuard, AdminGuard } from '../components/auth/AuthGuard';
 
 const router = createBrowserRouter([
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
         path: 'admin',
         element: (
           <AdminGuard>
-            <PlaceholderPage title="시스템 관리" />
+            <AdminPage />
           </AdminGuard>
         ),
       },
