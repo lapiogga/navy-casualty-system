@@ -6,12 +6,14 @@ const apiClient = axios.create({
   headers: { 'Content-Type': 'application/json' },
 });
 
-// 세션 만료 시 로그인 페이지로 리다이렉트 (Phase 2에서 완성)
+// 세션 만료 시 로그인 페이지로 리다이렉트 (/login 경로에서는 무한 루프 방지)
 apiClient.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response?.status === 401) {
-      window.location.href = '/login';
+      if (window.location.pathname !== '/login') {
+        window.location.href = '/login';
+      }
     }
     return Promise.reject(error);
   }

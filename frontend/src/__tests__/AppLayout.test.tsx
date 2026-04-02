@@ -1,13 +1,27 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import AppLayout from '../components/layout/AppLayout';
+
+// useAuth mock (ADMIN 역할)
+vi.mock('../hooks/useAuth', () => ({
+  useAuth: () => ({
+    user: { username: 'admin', name: '관리자', role: 'ADMIN' },
+    loading: false,
+    login: vi.fn(),
+    logout: vi.fn(),
+    isAdmin: true,
+    isManagerOrAbove: true,
+    hasRole: () => true,
+  }),
+  AuthProvider: ({ children }: { children: React.ReactNode }) => <>{children}</>,
+}));
 
 function renderWithRouter() {
   return render(
     <MemoryRouter initialEntries={['/dead']}>
       <AppLayout />
-    </MemoryRouter>
+    </MemoryRouter>,
   );
 }
 
@@ -17,7 +31,7 @@ describe('AppLayout', () => {
     expect(screen.getByText('해군 사상자 관리 시스템')).toBeInTheDocument();
   });
 
-  it('6개 메뉴 항목을 렌더링한다', () => {
+  it('ADMIN 사용자에게 6개 메뉴 항목을 렌더링한다', () => {
     renderWithRouter();
     const menuLabels = [
       '사망자 관리',
@@ -36,5 +50,11 @@ describe('AppLayout', () => {
     const { container } = renderWithRouter();
     const sider = container.querySelector('.ant-layout-sider');
     expect(sider).toBeInTheDocument();
+  });
+
+  it('사용자 정보와 로그아웃 버튼이 표시된다', () => {
+    renderWithRouter();
+    expect(screen.getByText('관리자 (ADMIN)')).toBeInTheDocument();
+    expect(screen.getByText('로그아웃')).toBeInTheDocument();
   });
 });

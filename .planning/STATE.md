@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: — 해군 사상자 관리 전산 시스템 초도 운영
 status: Ready to execute
-stopped_at: Completed 02-02-PLAN.md
-last_updated: "2026-04-02T16:48:03.665Z"
+stopped_at: Completed 02-03-PLAN.md
+last_updated: "2026-04-03T00:00:00Z"
 progress:
   total_phases: 8
   completed_phases: 1
   total_plans: 7
-  completed_plans: 5
+  completed_plans: 6
 ---
 
 # Execution State
@@ -17,12 +17,12 @@ progress:
 ## Current Position
 
 **Phase:** 02-rbac
-**Current Plan:** 2 of 4 (Wave 1 complete)
+**Current Plan:** 3 of 4 (Wave 2 in progress)
 **Status:** In Progress
 
 ## Progress
 
-[######----] 71% (5/7 plans complete)
+[########--] 86% (6/7 plans complete)
 
 ## Completed Plans
 
@@ -33,6 +33,7 @@ progress:
 | 01 | 03 | 1min | 1 | 6 |
 | 02 | 01 | 6min | 2 | 17 |
 | 02 | 02 | 6min | 2 | 12 |
+| 02 | 03 | 10min | 2 | 16 |
 
 ## Decisions
 
@@ -49,6 +50,8 @@ progress:
 - [Phase 02] PiiEncryptionConverter package-private 테스트 생성자로 환경변수 의존 제거
 - [Phase 02] AuditLogAspect 감사 저장 실패 시 비즈니스 로직 비차단 (catch + log.error)
 - [Phase 02] AuditLogService.save() REQUIRES_NEW 전파로 비즈니스 트랜잭션 독립
+- [Phase 02-rbac] AuthProvider를 main.tsx에서 RouterProvider 감싸기 (전역 인증 컨텍스트)
+- [Phase 02-rbac] AuthGuard/AdminGuard 별도 컴포넌트로 라우트별 가드 적용
 
 ## Blockers
 
@@ -57,4 +60,4 @@ None
 ## Last Session
 
 - **Timestamp:** 2026-04-03T00:00:00Z
-- **Stopped At:** Completed 02-02-PLAN.md (Wave 1 complete)
+- **Stopped At:** Completed 02-03-PLAN.md
