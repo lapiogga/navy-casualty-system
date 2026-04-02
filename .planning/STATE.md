@@ -3,12 +3,12 @@
 ## Current Position
 
 **Phase:** 02-rbac
-**Current Plan:** 2 of 4
+**Current Plan:** 4 of 4
 **Status:** In Progress
 
 ## Progress
 
-[####------] 43% (4/7 plans complete)
+[######----] 57% (5/7 plans complete)
 
 ## Completed Plans
 
@@ -18,6 +18,7 @@
 | 01 | 02 | - | - | - |
 | 01 | 03 | 1min | 1 | 6 |
 | 02 | 01 | 6min | 2 | 17 |
+| 02 | 04 | 4min | 2 | 9 |
 
 ## Decisions
 
@@ -32,6 +33,8 @@
 - [Phase 02-rbac] 기존 common/config/SecurityConfig 삭제, security 패키지로 RBAC 완전 교체
 - [Phase 02-rbac] D-02 에러 메시지 통일: 잠금/실패 구분 없이 동일 메시지 반환
 - [Phase 02-rbac] 역할 계층: ADMIN > MANAGER > OPERATOR > VIEWER (RoleHierarchyImpl)
+- [Phase 02-rbac] record DTO + from() 팩토리 패턴으로 엔티티->응답 변환
+- [Phase 02-rbac] AuditLogController GET only (append-only 원칙)
 
 ## Blockers
 
@@ -39,5 +42,5 @@ None
 
 ## Last Session
 
-- **Timestamp:** 2026-04-02T15:32:35Z
-- **Stopped At:** Completed 02-01-PLAN.md
+- **Timestamp:** 2026-04-02T16:57:43Z
+- **Stopped At:** Completed 02-04-PLAN.md
