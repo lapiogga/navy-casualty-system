@@ -95,7 +95,7 @@ Plans:
 
 Plans:
 - [ ] 03-01-PLAN.md — 백엔드 Dead 엔티티 + 코드 테이블 + QueryDSL Repository + Service + Controller
-- [ ] 03-02-PLAN.md — 프론트엔드 타입 + API 훅 + 목록 페이지 + 등록/수정/삭제 Modal
+- [x] 03-02-PLAN.md — 프론트엔드 타입 + API 훅 + 목록 페이지 + 등록/수정/삭제 Modal
 - [ ] 03-03-PLAN.md — Excel 내보내기 (Apache POI + SXSSFWorkbook + 다운로드 버튼)
 
 **Key Deliverables:**
