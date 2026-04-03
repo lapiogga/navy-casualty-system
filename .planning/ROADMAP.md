@@ -129,7 +129,7 @@ Plans:
 
 Plans:
 - [x] 04-01-PLAN.md — 백엔드 Wounded 엔티티 + WoundedStatus(4단계) + WoundType(3-value enum) + VeteransOffice + QueryDSL Repository + Service + Controller
-- [ ] 04-02-PLAN.md — 프론트엔드 타입 + API 훅 + 목록 페이지 + 등록/수정/삭제 Modal (보훈청 Select + 상이구분)
+- [x] 04-02-PLAN.md — 프론트엔드 타입 + API 훅 + 목록 페이지 + 등록/수정/삭제 Modal (보훈청 Select + 상이구분)
 - [ ] 04-03-PLAN.md — Excel 내보내기 (SXSSFWorkbook + 보훈청/병명/상이구분 컬럼 + 다운로드 버튼)
 
 **Key Deliverables:**

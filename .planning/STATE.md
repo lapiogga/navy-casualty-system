@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: — 해군 사상자 관리 전산 시스템 초도 운영
 status: Ready to execute
-stopped_at: Completed 04-01-PLAN.md
-last_updated: "2026-04-03T02:55:42.859Z"
+stopped_at: Completed 04-02-PLAN.md
+last_updated: "2026-04-03T03:06:11.271Z"
 progress:
   total_phases: 8
   completed_phases: 3
-  total_plans: 15
-  completed_plans: 13
+  total_plans: 14
+  completed_plans: 14
 ---
 
 # Execution State
@@ -17,7 +17,7 @@ progress:
 ## Current Position
 
 Phase: 04 (wounded-management) — EXECUTING
-Plan: 2 of 3
+Plan: 3 of 3
 
 ## Progress
 
@@ -62,6 +62,7 @@ Plan: 2 of 3
 - [Phase 03]: 코드 테이블 Map 캐시로 N+1 방지, SXSSFWorkbook(100) 메모리 윈도우
 - [Phase 04]: Dead 패턴 100% 복제 + 상이자 고유 필드(veteransOfficeId, diseaseName, woundType) 반영
 - [Phase 04]: WoundedStatus 4단계 전이: REGISTERED->UNDER_REVIEW->CONFIRMED->NOTIFIED
+- [Phase 04]: Dead 코드 훅 re-export로 재사용, 상이자 4단계 상태 체계
 
 ## Blockers
 
@@ -70,4 +71,4 @@ None
 ## Last Session
 
 - **Timestamp:** 2026-04-03T00:00:00Z
-- **Stopped At:** Completed 04-01-PLAN.md
+- **Stopped At:** Completed 04-02-PLAN.md
