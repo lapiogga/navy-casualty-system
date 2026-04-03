@@ -29,6 +29,7 @@ dependencies {
     implementation("org.flywaydb:flyway-database-postgresql")
     implementation("com.querydsl:querydsl-jpa:5.1.0:jakarta")
     implementation("org.apache.poi:poi-ooxml:5.3.0")
+    implementation("net.sf.jasperreports:jasperreports:6.21.3")
 
     runtimeOnly("org.postgresql:postgresql")
 
