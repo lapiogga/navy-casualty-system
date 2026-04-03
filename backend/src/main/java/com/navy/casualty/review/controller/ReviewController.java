@@ -1,5 +1,6 @@
 package com.navy.casualty.review.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import com.navy.casualty.common.dto.ApiResponse;
@@ -10,7 +11,9 @@ import com.navy.casualty.review.dto.ReviewResponse;
 import com.navy.casualty.review.dto.ReviewSearchRequest;
 import com.navy.casualty.review.dto.ReviewUpdateRequest;
 import com.navy.casualty.review.entity.ReviewStatus;
+import com.navy.casualty.review.service.ReviewExcelService;
 import com.navy.casualty.review.service.ReviewService;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -37,6 +40,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class ReviewController {
 
     private final ReviewService reviewService;
+    private final ReviewExcelService reviewExcelService;
+
+    /**
+     * 검색 조건이 적용된 전공사상심사 현황을 Excel로 내보낸다.
+     */
+    @GetMapping("/excel")
+    @PreAuthorize("hasRole('VIEWER')")
+    public void exportExcel(ReviewSearchRequest request, HttpServletResponse response) throws IOException {
+        reviewExcelService.exportExcel(request, response);
+    }
 
     /**
      * 심사 목록을 검색한다 (동적 조건 + 페이징).
