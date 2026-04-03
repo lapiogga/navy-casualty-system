@@ -8,6 +8,7 @@ import {
   BarChartOutlined,
   SettingOutlined,
   LogoutOutlined,
+  UnorderedListOutlined,
 } from '@ant-design/icons';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
@@ -19,7 +20,26 @@ const allMenuItems = [
   { key: '/wounded', icon: <MedicineBoxOutlined />, label: '상이자 관리' },
   { key: '/review', icon: <AuditOutlined />, label: '전공사상심사' },
   { key: '/document/history', icon: <FileTextOutlined />, label: '발급 이력' },
-  { key: '/statistics', icon: <BarChartOutlined />, label: '통계/현황' },
+  {
+    key: 'status-sub',
+    icon: <BarChartOutlined />,
+    label: '현황',
+    children: [
+      { key: '/statistics/branch', label: '신분별 사망자 현황' },
+      { key: '/statistics/monthly', label: '월별 사망자 현황' },
+      { key: '/statistics/yearly', label: '연도별 사망자 현황' },
+      { key: '/statistics/unit', label: '부대별 사망자 현황' },
+    ],
+  },
+  {
+    key: 'roster-sub',
+    icon: <UnorderedListOutlined />,
+    label: '명부',
+    children: [
+      { key: '/roster/unit', label: '부대별 사망자 명부' },
+      { key: '/roster/all', label: '전사망자 명부' },
+    ],
+  },
   { key: '/admin', icon: <SettingOutlined />, label: '시스템 관리', adminOnly: true },
 ];
 
@@ -28,6 +48,13 @@ export default function AppLayout() {
   const location = useLocation();
   const { user, logout, isAdmin } = useAuth();
   const [collapsed, setCollapsed] = useState(false);
+
+  // 현황/명부 SubMenu 자동 open
+  const defaultOpenKeys = useMemo(() => {
+    if (location.pathname.startsWith('/statistics')) return ['status-sub'];
+    if (location.pathname.startsWith('/roster')) return ['roster-sub'];
+    return [];
+  }, [location.pathname]);
 
   // AUTH-06: ADMIN이 아닌 사용자에게 시스템 관리 메뉴 숨김
   const menuItems = useMemo(
@@ -71,6 +98,7 @@ export default function AppLayout() {
           theme="dark"
           mode="inline"
           selectedKeys={[location.pathname]}
+          defaultOpenKeys={defaultOpenKeys}
           items={menuItems}
           onClick={({ key }) => navigate(key)}
         />

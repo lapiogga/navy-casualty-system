@@ -1,10 +1,15 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import AppLayout from '../components/layout/AppLayout';
-import PlaceholderPage from '../components/layout/PlaceholderPage';
 import DeadListPage from '../pages/dead/DeadListPage';
 import WoundedListPage from '../pages/wounded/WoundedListPage';
 import ReviewListPage from '../pages/review/ReviewListPage';
 import DocumentIssueHistoryPage from '../pages/document/DocumentIssueHistoryPage';
+import BranchStatPage from '../pages/statistics/BranchStatPage';
+import MonthlyStatPage from '../pages/statistics/MonthlyStatPage';
+import YearlyStatPage from '../pages/statistics/YearlyStatPage';
+import UnitStatPage from '../pages/statistics/UnitStatPage';
+import UnitRosterPage from '../pages/statistics/UnitRosterPage';
+import AllRosterPage from '../pages/statistics/AllRosterPage';
 import ErrorPage from '../pages/ErrorPage';
 import NotFoundPage from '../pages/NotFoundPage';
 import LoginPage from '../pages/LoginPage';
@@ -26,7 +31,12 @@ const router = createBrowserRouter([
       { path: 'wounded', element: <WoundedListPage /> },
       { path: 'review', element: <ReviewListPage /> },
       { path: 'document/history', element: <DocumentIssueHistoryPage /> },
-      { path: 'statistics', element: <PlaceholderPage title="통계/현황" /> },
+      { path: 'statistics/branch', element: <BranchStatPage /> },
+      { path: 'statistics/monthly', element: <MonthlyStatPage /> },
+      { path: 'statistics/yearly', element: <YearlyStatPage /> },
+      { path: 'statistics/unit', element: <UnitStatPage /> },
+      { path: 'roster/unit', element: <UnitRosterPage /> },
+      { path: 'roster/all', element: <AllRosterPage /> },
       {
         path: 'admin',
         element: (
