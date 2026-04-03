@@ -26,12 +26,13 @@
 
 **Requirements:** INFRA-01~05
 
-**Plans:** 3 plans
+**Plans:** 4 plans
 
 Plans:
 - [x] 01-01-PLAN.md — Spring Boot 백엔드 뼈대 + Flyway 마이그레이션 V1~V9 + 공통 코드
 - [x] 01-02-PLAN.md — React 프론트엔드 뼈대 + Ant Design Layout + 라우팅
 - [x] 01-03-PLAN.md — Docker Compose 3종 + Dockerfile + 환경변수 템플릿
+- [ ] 01-04-PLAN.md — UAT Gap Closure: admin BCrypt 해시 교정 + 401 리다이렉트 수정
 
 **Key Deliverables:**
 - Spring Boot 3.x + Java 21 프로젝트 뼈대 (패키지 구조, 공통 설정)
