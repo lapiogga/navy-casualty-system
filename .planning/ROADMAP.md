@@ -208,9 +208,15 @@ Plans:
 
 **Requirements:** STAT-01~07
 
+**Plans:** 2 plans
+
+Plans:
+- [ ] 07-01-PLAN.md — 백엔드 통계 API (DTO 5종 + QueryDSL 집계 Repository + Service + ExcelService + Controller + Flyway V17 인덱스)
+- [ ] 07-02-PLAN.md — 프론트엔드 통계 UI (타입 + API 훅 + 6개 페이지 + @ant-design/charts 바 차트 + 사이드바 메뉴 재구성 + 라우팅)
+
 **Key Deliverables:**
 - 통계 전용 Service 레이어 (QueryDSL GROUP BY 집계 쿼리)
-  - 읽기 전용 DataSource 빈으로 통계 쿼리 라우팅 (쓰기 DB 성능 보호)
+  - @Transactional(readOnly = true)로 통계 쿼리 실행 (v1 단일 DataSource)
 - 6종 통계 조회 API + 화면:
   1. 신분별 사망자 현황
   2. 월별 사망자 현황
@@ -218,8 +224,8 @@ Plans:
   4. 부대별 사망자 현황
   5. 부대별 사망자 명부
   6. 전사망자 명부
-- 각 통계 화면: Ant Design Table + Excel 다운로드 버튼
-- 응답시간 5초 이내 보장 (쿼리 최적화, 필요 시 인덱스 추가)
+- 각 통계 화면: @ant-design/charts 바 차트 + Ant Design Table + Excel 다운로드 버튼
+- 응답시간 5초 이내 보장 (PostgreSQL partial index 추가)
 - 통계 Excel: SXSSFWorkbook 스트리밍 방식 (대용량 대비)
 
 ---
