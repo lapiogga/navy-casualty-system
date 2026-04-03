@@ -154,7 +154,7 @@ Plans:
 
 Plans:
 - [x] 05-01-PLAN.md — 백엔드 Review/ReviewHistory 엔티티 + ReviewClassification/ReviewStatus enum + Flyway V16 + QueryDSL Repository + Service(이력 스냅샷+자동반영+보훈청통보) + Controller
-- [ ] 05-02-PLAN.md — 프론트엔드 타입 + API 훅 + 목록 페이지 + 등록/수정/삭제 Modal + 이력 타임라인 Drawer
+- [x] 05-02-PLAN.md — 프론트엔드 타입 + API 훅 + 목록 페이지 + 등록/수정/삭제 Modal + 이력 타임라인 Drawer
 - [ ] 05-03-PLAN.md — Excel 내보내기 (SXSSFWorkbook + 심사차수/분류/보훈청통보일 컬럼 + 다운로드 버튼)
 
 **Key Deliverables:**
