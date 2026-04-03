@@ -7,9 +7,9 @@ FROM eclipse-temurin:21-jdk-alpine AS builder
 WORKDIR /app
 COPY backend/gradle/ gradle/
 COPY backend/gradlew backend/settings.gradle.kts backend/build.gradle.kts ./
-RUN chmod +x ./gradlew && ./gradlew dependencies --no-daemon
+RUN sed -i 's/\r$//' ./gradlew && chmod +x ./gradlew && ./gradlew dependencies --no-daemon
 COPY backend/src/ src/
-RUN ./gradlew bootJar --no-daemon
+RUN ./gradlew bootJar --no-daemon && cp build/libs/navy-casualty-*.jar /app/app.jar
 
 # --- Stage 2: React 프론트엔드 빌드 ---
 FROM node:22-alpine AS frontend-builder
@@ -23,7 +23,7 @@ RUN npm run build
 FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
-COPY --from=builder /app/build/libs/*.jar app.jar
+COPY --from=builder /app/app.jar app.jar
 COPY --from=frontend-builder /app/dist/ /app/static/
 USER appuser
 EXPOSE 8080
