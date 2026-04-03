@@ -2,22 +2,22 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: — 해군 사상자 관리 전산 시스템 초도 운영
-status: Ready to plan
-stopped_at: Completed 04-03-PLAN.md
-last_updated: "2026-04-03T03:18:07.247Z"
+status: Ready to execute
+stopped_at: Completed 05-01-PLAN.md
+last_updated: "2026-04-03T03:59:18.270Z"
 progress:
   total_phases: 8
   completed_phases: 4
-  total_plans: 15
-  completed_plans: 15
+  total_plans: 18
+  completed_plans: 16
 ---
 
 # Execution State
 
 ## Current Position
 
-Phase: 5
-Plan: Not started
+Phase: 05 (review-management) — EXECUTING
+Plan: 2 of 3
 
 ## Progress
 
@@ -64,6 +64,9 @@ Plan: Not started
 - [Phase 04]: WoundedStatus 4단계 전이: REGISTERED->UNDER_REVIEW->CONFIRMED->NOTIFIED
 - [Phase 04]: Dead 코드 훅 re-export로 재사용, 상이자 4단계 상태 체계
 - [Phase 04]: DeadExcelService 패턴 100% 복제 + 상이자 고유 컬럼(보훈청명/병명/상이구분) 반영
+- [Phase 05]: 심사 특성상 동일인 복수 심사 가능하므로 SSN 해시 중복 검증 수행 안 함 (군번+심사차수 중복만 검증)
+- [Phase 05]: classification 자동반영 시 상태 전이 불가하면 경고 로그 후 skip (트랜잭션 롤백 안 함)
+- [Phase 05]: Dead/Wounded에 findByServiceNumber, updateDeathType/updateWoundType 메서드 추가 (크로스-도메인 자동반영)
 
 ## Blockers
 
@@ -72,4 +75,4 @@ None
 ## Last Session
 
 - **Timestamp:** 2026-04-03T00:00:00Z
-- **Stopped At:** Completed 04-03-PLAN.md
+- **Stopped At:** Completed 05-01-PLAN.md
