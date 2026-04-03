@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: — 해군 사상자 관리 전산 시스템 초도 운영
-status: Ready to execute
-stopped_at: Completed 07-01-PLAN.md
-last_updated: "2026-04-03T17:18:50.676Z"
+status: Phase complete — ready for verification
+stopped_at: Completed 07-02-PLAN.md
+last_updated: "2026-04-03T17:25:55.863Z"
 progress:
   total_phases: 8
-  completed_phases: 6
+  completed_phases: 7
   total_plans: 23
-  completed_plans: 22
+  completed_plans: 23
 ---
 
 # Execution State
@@ -80,6 +80,8 @@ Plan: 2 of 2
 - [Phase 07]: QueryDSL Projections.constructor로 집계 결과 DTO 직접 매핑 (N+1 방지)
 - [Phase 07]: CaseBuilder로 NULL branch/unit을 미분류로 처리 (leftJoin + COALESCE 대체)
 - [Phase 07]: @WebMvcTest 슬라이스 테스트로 컨트롤러 검증 (PiiEncryptionConverter 환경변수 의존 회피)
+- [Phase 07]: @ant-design/charts Column 바 차트 + Table 동일 데이터 공유 패턴 (STAT-07 중복 호출 방지)
+- [Phase 07]: dead.ts useUnits 훅 재사용으로 부대별 명부 필터 구현 (새 API 불필요)
 
 ## Blockers
 
@@ -88,4 +90,4 @@ None
 ## Last Session
 
 - **Timestamp:** 2026-04-03T00:00:00Z
-- **Stopped At:** Completed 07-01-PLAN.md
+- **Stopped At:** Completed 07-02-PLAN.md

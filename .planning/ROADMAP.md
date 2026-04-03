@@ -212,7 +212,7 @@ Plans:
 
 Plans:
 - [x] 07-01-PLAN.md — 백엔드 통계 API (DTO 5종 + QueryDSL 집계 Repository + Service + ExcelService + Controller + Flyway V17 인덱스)
-- [ ] 07-02-PLAN.md — 프론트엔드 통계 UI (타입 + API 훅 + 6개 페이지 + @ant-design/charts 바 차트 + 사이드바 메뉴 재구성 + 라우팅)
+- [x] 07-02-PLAN.md — 프론트엔드 통계 UI (타입 + API 훅 + 6개 페이지 + @ant-design/charts 바 차트 + 사이드바 메뉴 재구성 + 라우팅)
 
 **Key Deliverables:**
 - 통계 전용 Service 레이어 (QueryDSL GROUP BY 집계 쿼리)
