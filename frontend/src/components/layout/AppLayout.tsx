@@ -4,7 +4,7 @@ import {
   TeamOutlined,
   MedicineBoxOutlined,
   AuditOutlined,
-  PrinterOutlined,
+  FileTextOutlined,
   BarChartOutlined,
   SettingOutlined,
   LogoutOutlined,
@@ -18,7 +18,7 @@ const allMenuItems = [
   { key: '/dead', icon: <TeamOutlined />, label: '사망자 관리' },
   { key: '/wounded', icon: <MedicineBoxOutlined />, label: '상이자 관리' },
   { key: '/review', icon: <AuditOutlined />, label: '전공사상심사' },
-  { key: '/document', icon: <PrinterOutlined />, label: '문서 출력' },
+  { key: '/document/history', icon: <FileTextOutlined />, label: '발급 이력' },
   { key: '/statistics', icon: <BarChartOutlined />, label: '통계/현황' },
   { key: '/admin', icon: <SettingOutlined />, label: '시스템 관리', adminOnly: true },
 ];

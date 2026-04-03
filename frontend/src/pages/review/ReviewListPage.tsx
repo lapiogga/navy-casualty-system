@@ -11,6 +11,7 @@ import {
   HistoryOutlined,
   SendOutlined,
   DownloadOutlined,
+  PrinterOutlined,
 } from '@ant-design/icons';
 import type { ColumnsType } from 'antd/es/table';
 import dayjs from 'dayjs';
@@ -26,9 +27,12 @@ import {
 } from '../../api/review';
 import type { ReviewRecord, ReviewSearchParams, ReviewClassification } from '../../types/review';
 import { CLASSIFICATION_LABELS } from '../../types/review';
+import { DocumentType } from '../../types/document';
 import ReviewFormModal from './ReviewFormModal';
 import ReviewDeleteModal from './ReviewDeleteModal';
 import ReviewHistoryDrawer from './ReviewHistoryDrawer';
+import DocumentIssuePurposeModal from '../document/DocumentIssuePurposeModal';
+import DocumentPreviewModal from '../document/DocumentPreviewModal';
 
 const statusOptions = [
   { value: 'REGISTERED', label: '등록' },
@@ -72,6 +76,12 @@ export default function ReviewListPage() {
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [deleteRecordId, setDeleteRecordId] = useState<number | null>(null);
   const [historyDrawerReviewId, setHistoryDrawerReviewId] = useState<number | null>(null);
+
+  // 문서 출력 Modal 상태
+  const [docPurposeModalOpen, setDocPurposeModalOpen] = useState(false);
+  const [selectedDocType, setSelectedDocType] = useState<DocumentType>(DocumentType.REVIEW_RESULT);
+  const [selectedTargetId, setSelectedTargetId] = useState<number>(0);
+  const [pdfBlob, setPdfBlob] = useState<Blob | null>(null);
 
   // 데이터 조회
   const { data, isLoading } = useReviewList({ ...searchParams, page: page - 1, size: pageSize });
@@ -121,6 +131,17 @@ export default function ReviewListPage() {
     },
     [updateStatus],
   );
+
+  const handleDocPrint = useCallback((docType: DocumentType, targetId: number) => {
+    setSelectedDocType(docType);
+    setSelectedTargetId(targetId);
+    setDocPurposeModalOpen(true);
+  }, []);
+
+  const handleDocSuccess = useCallback((blob: Blob) => {
+    setDocPurposeModalOpen(false);
+    setPdfBlob(blob);
+  }, []);
 
   const handleNotify = useCallback(
     (record: ReviewRecord) => {
@@ -177,6 +198,20 @@ export default function ReviewListPage() {
     },
     { title: '보훈청 통보일', dataIndex: 'notificationDate', key: 'notificationDate', width: 120 },
     { title: '등록일', dataIndex: 'createdAt', key: 'createdAt', width: 110 },
+    {
+      title: '문서출력',
+      key: 'document',
+      width: 120,
+      render: (_, record) => (
+        <Button
+          size="small"
+          icon={<PrinterOutlined />}
+          onClick={() => handleDocPrint(DocumentType.REVIEW_RESULT, record.id)}
+        >
+          심사결과서
+        </Button>
+      ),
+    },
     {
       title: '관리',
       key: 'actions',
@@ -369,6 +404,22 @@ export default function ReviewListPage() {
         reviewId={historyDrawerReviewId}
         open={historyDrawerReviewId !== null}
         onClose={() => setHistoryDrawerReviewId(null)}
+      />
+
+      {/* 문서 발급 목적 Modal */}
+      <DocumentIssuePurposeModal
+        open={docPurposeModalOpen}
+        documentType={selectedDocType}
+        targetId={selectedTargetId}
+        onSuccess={handleDocSuccess}
+        onCancel={() => setDocPurposeModalOpen(false)}
+      />
+
+      {/* PDF 미리보기 Modal */}
+      <DocumentPreviewModal
+        pdfBlob={pdfBlob}
+        documentType={selectedDocType}
+        onClose={() => setPdfBlob(null)}
       />
     </div>
   );

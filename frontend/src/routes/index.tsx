@@ -4,6 +4,7 @@ import PlaceholderPage from '../components/layout/PlaceholderPage';
 import DeadListPage from '../pages/dead/DeadListPage';
 import WoundedListPage from '../pages/wounded/WoundedListPage';
 import ReviewListPage from '../pages/review/ReviewListPage';
+import DocumentIssueHistoryPage from '../pages/document/DocumentIssueHistoryPage';
 import ErrorPage from '../pages/ErrorPage';
 import NotFoundPage from '../pages/NotFoundPage';
 import LoginPage from '../pages/LoginPage';
@@ -24,7 +25,7 @@ const router = createBrowserRouter([
       { path: 'dead', element: <DeadListPage /> },
       { path: 'wounded', element: <WoundedListPage /> },
       { path: 'review', element: <ReviewListPage /> },
-      { path: 'document', element: <PlaceholderPage title="문서 출력" /> },
+      { path: 'document/history', element: <DocumentIssueHistoryPage /> },
       { path: 'statistics', element: <PlaceholderPage title="통계/현황" /> },
       {
         path: 'admin',

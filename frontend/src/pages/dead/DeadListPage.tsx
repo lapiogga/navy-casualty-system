@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
-import { Card, Form, Input, Select, DatePicker, Button, Table, Tag, Space } from 'antd';
-import { PlusOutlined, SearchOutlined, ReloadOutlined, DownOutlined, UpOutlined, EditOutlined, DeleteOutlined, DownloadOutlined } from '@ant-design/icons';
+import { Card, Form, Input, Select, DatePicker, Button, Table, Tag, Space, Dropdown } from 'antd';
+import { PlusOutlined, SearchOutlined, ReloadOutlined, DownOutlined, UpOutlined, EditOutlined, DeleteOutlined, DownloadOutlined, PrinterOutlined, FileTextOutlined } from '@ant-design/icons';
 import type { ColumnsType } from 'antd/es/table';
 import dayjs from 'dayjs';
 import { useAuth } from '../../hooks/useAuth';
@@ -14,8 +14,11 @@ import {
   useExportDeadExcel,
 } from '../../api/dead';
 import type { DeadRecord, DeadSearchParams } from '../../types/dead';
+import { DocumentType } from '../../types/document';
 import DeadFormModal from './DeadFormModal';
 import DeadDeleteModal from './DeadDeleteModal';
+import DocumentIssuePurposeModal from '../document/DocumentIssuePurposeModal';
+import DocumentPreviewModal from '../document/DocumentPreviewModal';
 
 const statusOptions = [
   { value: 'REGISTERED', label: '등록' },
@@ -42,6 +45,12 @@ export default function DeadListPage() {
   const [editRecord, setEditRecord] = useState<DeadRecord | null>(null);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [deleteRecordId, setDeleteRecordId] = useState<number | null>(null);
+
+  // 문서 출력 Modal 상태
+  const [docPurposeModalOpen, setDocPurposeModalOpen] = useState(false);
+  const [selectedDocType, setSelectedDocType] = useState<DocumentType>(DocumentType.DEAD_CERTIFICATE);
+  const [selectedTargetId, setSelectedTargetId] = useState<number>(0);
+  const [pdfBlob, setPdfBlob] = useState<Blob | null>(null);
 
   // 데이터 조회
   const { data, isLoading } = useDeadList({ ...searchParams, page: page - 1, size: pageSize });
@@ -92,6 +101,17 @@ export default function DeadListPage() {
     [updateStatus],
   );
 
+  const handleDocPrint = useCallback((docType: DocumentType, targetId: number) => {
+    setSelectedDocType(docType);
+    setSelectedTargetId(targetId);
+    setDocPurposeModalOpen(true);
+  }, []);
+
+  const handleDocSuccess = useCallback((blob: Blob) => {
+    setDocPurposeModalOpen(false);
+    setPdfBlob(blob);
+  }, []);
+
   const columns: ColumnsType<DeadRecord> = [
     {
       title: '번호',
@@ -123,6 +143,34 @@ export default function DeadListPage() {
       ),
     },
     { title: '등록일', dataIndex: 'createdAt', key: 'createdAt', width: 110 },
+    {
+      title: '문서출력',
+      key: 'document',
+      width: 120,
+      render: (_, record) => (
+        <Dropdown
+          menu={{
+            items: [
+              {
+                key: 'dead_cert',
+                label: '국가유공자 확인서',
+                onClick: () => handleDocPrint(DocumentType.DEAD_CERTIFICATE, record.id),
+              },
+              {
+                key: 'death_confirm',
+                label: '순직/사망확인서',
+                onClick: () => handleDocPrint(DocumentType.DEATH_CONFIRMATION, record.id),
+              },
+            ],
+          }}
+          trigger={['click']}
+        >
+          <Button size="small" icon={<PrinterOutlined />}>
+            출력 <DownOutlined />
+          </Button>
+        </Dropdown>
+      ),
+    },
     {
       title: '관리',
       key: 'actions',
@@ -255,6 +303,12 @@ export default function DeadListPage() {
         >
           Excel 다운로드
         </Button>
+        <Button
+          icon={<FileTextOutlined />}
+          onClick={() => handleDocPrint(DocumentType.DEAD_STATUS_REPORT, 0)}
+        >
+          사망자 현황 보고서
+        </Button>
       </div>
 
       {/* 테이블 */}
@@ -296,6 +350,22 @@ export default function DeadListPage() {
           setDeleteRecordId(null);
         }}
         recordId={deleteRecordId}
+      />
+
+      {/* 문서 발급 목적 Modal */}
+      <DocumentIssuePurposeModal
+        open={docPurposeModalOpen}
+        documentType={selectedDocType}
+        targetId={selectedTargetId}
+        onSuccess={handleDocSuccess}
+        onCancel={() => setDocPurposeModalOpen(false)}
+      />
+
+      {/* PDF 미리보기 Modal */}
+      <DocumentPreviewModal
+        pdfBlob={pdfBlob}
+        documentType={selectedDocType}
+        onClose={() => setPdfBlob(null)}
       />
     </div>
   );
