@@ -22,6 +22,7 @@ import {
   useUnits,
   useUpdateReviewStatus,
   useRecordNotification,
+  useExportReviewExcel,
 } from '../../api/review';
 import type { ReviewRecord, ReviewSearchParams, ReviewClassification } from '../../types/review';
 import { CLASSIFICATION_LABELS } from '../../types/review';
@@ -79,6 +80,7 @@ export default function ReviewListPage() {
   const { data: units } = useUnits();
   const updateStatus = useUpdateReviewStatus();
   const recordNotification = useRecordNotification();
+  const exportExcel = useExportReviewExcel();
 
   const handleSearch = useCallback(
     (values: Record<string, unknown>) => {
@@ -312,7 +314,11 @@ export default function ReviewListPage() {
             등록
           </Button>
         )}
-        <Button icon={<DownloadOutlined />} disabled>
+        <Button
+          icon={<DownloadOutlined />}
+          onClick={() => exportExcel.mutate(searchParams)}
+          loading={exportExcel.isPending}
+        >
           Excel 다운로드
         </Button>
       </div>
