@@ -1,5 +1,7 @@
 package com.navy.casualty.dead.repository;
 
+import java.util.Optional;
+
 import com.navy.casualty.dead.entity.Dead;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -11,4 +13,6 @@ public interface DeadRepository extends JpaRepository<Dead, Long>, DeadRepositor
     boolean existsByServiceNumber(String serviceNumber);
 
     boolean existsBySsnHash(String ssnHash);
+
+    Optional<Dead> findByServiceNumber(String serviceNumber);
 }

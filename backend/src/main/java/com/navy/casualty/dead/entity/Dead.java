@@ -114,6 +114,13 @@ public class Dead extends BaseAuditEntity {
     }
 
     /**
+     * 사망구분을 변경한다 (전공사상심사 결과 자동반영용).
+     */
+    public void updateDeathType(Long deathTypeId) {
+        this.deathTypeId = deathTypeId;
+    }
+
+    /**
      * 주민번호 변경 시 암호화 값과 해시를 갱신한다.
      */
     public void updateSsn(String ssnPlain, String ssnHash) {
