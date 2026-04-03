@@ -181,7 +181,7 @@ Plans:
 Plans:
 - [x] 06-01-PLAN.md — 백엔드 인프라 (JasperReports 의존성 + NanumGothic 폰트 + DocumentIssue 엔티티 + DocumentGenerationService + DocumentController + jrxml 7종)
 - [x] 06-02-PLAN.md — 프론트엔드 (문서 출력 버튼 + 발급 목적 Modal + PDF 미리보기/인쇄 + 발급 이력 조회)
-- [ ] 06-03-PLAN.md — 통합 테스트 (JasperReports 렌더링 + 한글 폰트 검증 + REST API 테스트)
+- [x] 06-03-PLAN.md — 통합 테스트 (JasperReports 렌더링 + 한글 폰트 검증 + REST API 테스트)
 
 **Key Deliverables:**
 - JasperReports 6.21.3 통합 설정 (iText 의존성 없는 LGPL 버전)

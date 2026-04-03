@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: — 해군 사상자 관리 전산 시스템 초도 운영
-status: Ready to execute
-stopped_at: Completed 06-02-PLAN.md
-last_updated: "2026-04-03T15:18:07.340Z"
+status: Phase complete — ready for verification
+stopped_at: Completed 06-03-PLAN.md
+last_updated: "2026-04-03T15:37:22.186Z"
 progress:
   total_phases: 8
-  completed_phases: 5
+  completed_phases: 6
   total_plans: 21
-  completed_plans: 20
+  completed_plans: 21
 ---
 
 # Execution State
@@ -75,6 +75,8 @@ Plan: 3 of 3
 - [Phase 06-document-output]: Content-Disposition filename*=UTF-8 인코딩으로 한글 PDF 파일명 처리
 - [Phase 06]: iframe + contentWindow.print()로 PDF 인쇄 (react-to-print 미사용)
 - [Phase 06]: URL.createObjectURL + useEffect cleanup으로 Blob URL 메모리 누수 방지
+- [Phase 06]: DocumentGenerationServiceTest: Mockito 단위 테스트 + awt.ignore.missing.font=true 설정
+- [Phase 06]: NanumGothic 폰트 검증: TTF 직접 로드 + createFont 방식 (PDF 바이너리 검색 대신)
 
 ## Blockers
 
@@ -83,4 +85,4 @@ None
 ## Last Session
 
 - **Timestamp:** 2026-04-03T00:00:00Z
-- **Stopped At:** Completed 06-02-PLAN.md
+- **Stopped At:** Completed 06-03-PLAN.md
