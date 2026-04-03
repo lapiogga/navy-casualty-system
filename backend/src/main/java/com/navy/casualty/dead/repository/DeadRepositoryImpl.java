@@ -23,6 +23,41 @@ public class DeadRepositoryImpl implements DeadRepositoryCustom {
     @Override
     public Page<Dead> search(DeadSearchRequest request, Pageable pageable) {
         QDead dead = QDead.dead;
+        BooleanBuilder where = buildConditions(request, dead);
+
+        List<Dead> content = queryFactory
+                .selectFrom(dead)
+                .where(where)
+                .orderBy(dead.id.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetch();
+
+        Long total = queryFactory
+                .select(dead.count())
+                .from(dead)
+                .where(where)
+                .fetchOne();
+
+        return new PageImpl<>(content, pageable, total != null ? total : 0L);
+    }
+
+    @Override
+    public List<Dead> searchAll(DeadSearchRequest request) {
+        QDead dead = QDead.dead;
+        BooleanBuilder where = buildConditions(request, dead);
+
+        return queryFactory
+                .selectFrom(dead)
+                .where(where)
+                .orderBy(dead.id.desc())
+                .fetch();
+    }
+
+    /**
+     * 검색 조건을 BooleanBuilder로 구성한다.
+     */
+    private BooleanBuilder buildConditions(DeadSearchRequest request, QDead dead) {
         BooleanBuilder builder = new BooleanBuilder();
 
         if (request.branchId() != null) {
@@ -50,20 +85,6 @@ public class DeadRepositoryImpl implements DeadRepositoryCustom {
             builder.and(dead.status.eq(request.status()));
         }
 
-        List<Dead> content = queryFactory
-                .selectFrom(dead)
-                .where(builder)
-                .orderBy(dead.id.desc())
-                .offset(pageable.getOffset())
-                .limit(pageable.getPageSize())
-                .fetch();
-
-        long total = queryFactory
-                .select(dead.count())
-                .from(dead)
-                .where(builder)
-                .fetchOne();
-
-        return new PageImpl<>(content, pageable, total);
+        return builder;
     }
 }

@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 import { Card, Form, Input, Select, DatePicker, Button, Table, Tag, Space } from 'antd';
-import { PlusOutlined, SearchOutlined, ReloadOutlined, DownOutlined, UpOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
+import { PlusOutlined, SearchOutlined, ReloadOutlined, DownOutlined, UpOutlined, EditOutlined, DeleteOutlined, DownloadOutlined } from '@ant-design/icons';
 import type { ColumnsType } from 'antd/es/table';
 import dayjs from 'dayjs';
 import { useAuth } from '../../hooks/useAuth';
@@ -11,6 +11,7 @@ import {
   useUnits,
   useDeathTypes,
   useUpdateDeadStatus,
+  useExportDeadExcel,
 } from '../../api/dead';
 import type { DeadRecord, DeadSearchParams } from '../../types/dead';
 import DeadFormModal from './DeadFormModal';
@@ -49,6 +50,7 @@ export default function DeadListPage() {
   const { data: units } = useUnits();
   const { data: deathTypes } = useDeathTypes();
   const updateStatus = useUpdateDeadStatus();
+  const exportExcel = useExportDeadExcel();
 
   const handleSearch = useCallback(
     (values: Record<string, unknown>) => {
@@ -246,7 +248,13 @@ export default function DeadListPage() {
             등록
           </Button>
         )}
-        <Button disabled>Excel 다운로드</Button>
+        <Button
+          icon={<DownloadOutlined />}
+          onClick={() => exportExcel.mutate(searchParams)}
+          loading={exportExcel.isPending}
+        >
+          Excel 다운로드
+        </Button>
       </div>
 
       {/* 테이블 */}

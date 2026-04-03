@@ -91,12 +91,12 @@ Plans:
 
 **Requirements:** DEAD-01~07
 
-**Plans:** 1/3 plans executed
+**Plans:** 3/3 plans executed
 
 Plans:
 - [x] 03-01-PLAN.md — 백엔드 Dead 엔티티 + 코드 테이블 + QueryDSL Repository + Service + Controller
 - [x] 03-02-PLAN.md — 프론트엔드 타입 + API 훅 + 목록 페이지 + 등록/수정/삭제 Modal
-- [ ] 03-03-PLAN.md — Excel 내보내기 (Apache POI + SXSSFWorkbook + 다운로드 버튼)
+- [x] 03-03-PLAN.md — Excel 내보내기 (Apache POI + SXSSFWorkbook + 다운로드 버튼)
 
 **Key Deliverables:**
 - 사망자 CRUD REST API (QueryDSL 다중조건 검색)

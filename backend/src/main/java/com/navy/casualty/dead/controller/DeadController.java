@@ -1,5 +1,7 @@
 package com.navy.casualty.dead.controller;
 
+import java.io.IOException;
+
 import com.navy.casualty.common.dto.ApiResponse;
 import com.navy.casualty.dead.dto.DeadCreateRequest;
 import com.navy.casualty.dead.dto.DeadDeleteRequest;
@@ -7,7 +9,9 @@ import com.navy.casualty.dead.dto.DeadResponse;
 import com.navy.casualty.dead.dto.DeadSearchRequest;
 import com.navy.casualty.dead.dto.DeadUpdateRequest;
 import com.navy.casualty.dead.entity.DeadStatus;
+import com.navy.casualty.dead.service.DeadExcelService;
 import com.navy.casualty.dead.service.DeadService;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -34,6 +38,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class DeadController {
 
     private final DeadService deadService;
+    private final DeadExcelService deadExcelService;
 
     /**
      * 사망자 목록을 검색한다 (동적 조건 + 페이징).
@@ -92,5 +97,15 @@ public class DeadController {
             @RequestParam DeadStatus status) {
         deadService.updateStatus(id, status);
         return ResponseEntity.ok(ApiResponse.ok(null));
+    }
+
+    /**
+     * 사망자 현황 Excel 다운로드.
+     * 검색 조건이 적용된 결과를 .xlsx 파일로 반환한다.
+     */
+    @GetMapping("/excel")
+    @PreAuthorize("hasRole('VIEWER')")
+    public void exportExcel(DeadSearchRequest request, HttpServletResponse response) throws IOException {
+        deadExcelService.exportExcel(request, response);
     }
 }
