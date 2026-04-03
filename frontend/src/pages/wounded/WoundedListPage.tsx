@@ -11,6 +11,7 @@ import {
   useUnits,
   useUpdateWoundedStatus,
   useVeteransOffices,
+  useExportWoundedExcel,
 } from '../../api/wounded';
 import type { WoundedRecord, WoundedSearchParams } from '../../types/wounded';
 import WoundedFormModal from './WoundedFormModal';
@@ -57,6 +58,7 @@ export default function WoundedListPage() {
   const { data: units } = useUnits();
   const { data: veteransOffices } = useVeteransOffices();
   const updateStatus = useUpdateWoundedStatus();
+  const exportExcel = useExportWoundedExcel();
 
   const handleSearch = useCallback(
     (values: Record<string, unknown>) => {
@@ -251,7 +253,11 @@ export default function WoundedListPage() {
             등록
           </Button>
         )}
-        <Button icon={<DownloadOutlined />} disabled>
+        <Button
+          icon={<DownloadOutlined />}
+          onClick={() => exportExcel.mutate(searchParams)}
+          loading={exportExcel.isPending}
+        >
           Excel 다운로드
         </Button>
       </div>

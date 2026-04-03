@@ -45,6 +45,35 @@ export function useWoundedList(params: WoundedSearchParams) {
   });
 }
 
+/**
+ * 상이자 현황 Excel 다운로드 mutation 훅.
+ * Blob 응답을 받아 브라우저 다운로드를 트리거한다.
+ */
+export function useExportWoundedExcel() {
+  return useMutation({
+    mutationFn: async (params: WoundedSearchParams) => {
+      const res = await apiClient.get('/wounded/excel', {
+        params,
+        responseType: 'blob',
+      });
+      const url = window.URL.createObjectURL(new Blob([res.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `wounded_list_${new Date().toISOString().slice(0, 10)}.xlsx`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    },
+    onSuccess: () => {
+      message.success('Excel 다운로드가 완료되었습니다');
+    },
+    onError: () => {
+      message.error('Excel 다운로드에 실패했습니다');
+    },
+  });
+}
+
 export function useCreateWounded() {
   const qc = useQueryClient();
   return useMutation({

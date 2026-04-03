@@ -7,7 +7,9 @@ import com.navy.casualty.wounded.dto.WoundedResponse;
 import com.navy.casualty.wounded.dto.WoundedSearchRequest;
 import com.navy.casualty.wounded.dto.WoundedUpdateRequest;
 import com.navy.casualty.wounded.entity.WoundedStatus;
+import com.navy.casualty.wounded.service.WoundedExcelService;
 import com.navy.casualty.wounded.service.WoundedService;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -25,6 +27,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
+
 /**
  * 상이자 관리 REST API 컨트롤러.
  */
@@ -34,6 +38,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class WoundedController {
 
     private final WoundedService woundedService;
+    private final WoundedExcelService woundedExcelService;
 
     /**
      * 상이자 목록을 검색한다 (동적 조건 + 페이징).
@@ -80,6 +85,15 @@ public class WoundedController {
             @Valid @RequestBody WoundedDeleteRequest request) {
         woundedService.softDelete(id, request.reason());
         return ResponseEntity.ok(ApiResponse.ok(null));
+    }
+
+    /**
+     * 상이자 현황을 Excel 파일로 내보낸다.
+     */
+    @GetMapping("/excel")
+    @PreAuthorize("hasRole('VIEWER')")
+    public void exportExcel(WoundedSearchRequest request, HttpServletResponse response) throws IOException {
+        woundedExcelService.exportExcel(request, response);
     }
 
     /**
