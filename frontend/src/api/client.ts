@@ -1,4 +1,5 @@
 import axios from 'axios';
+import router from '../routes';
 
 const apiClient = axios.create({
   baseURL: '/api',
@@ -12,7 +13,7 @@ apiClient.interceptors.response.use(
   (error) => {
     if (error.response?.status === 401) {
       if (window.location.pathname !== '/login') {
-        window.location.href = '/login';
+        router.navigate('/login');
       }
     }
     return Promise.reject(error);
