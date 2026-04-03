@@ -91,6 +91,13 @@ Plans:
 
 **Requirements:** DEAD-01~07
 
+**Plans:** 3 plans
+
+Plans:
+- [ ] 03-01-PLAN.md — 백엔드 Dead 엔티티 + 코드 테이블 + QueryDSL Repository + Service + Controller
+- [ ] 03-02-PLAN.md — 프론트엔드 타입 + API 훅 + 목록 페이지 + 등록/수정/삭제 Modal
+- [ ] 03-03-PLAN.md — Excel 내보내기 (Apache POI + SXSSFWorkbook + 다운로드 버튼)
+
 **Key Deliverables:**
 - 사망자 CRUD REST API (QueryDSL 다중조건 검색)
   - 군번·성명·생년월일·계급·소속·사망구분 복합 필터
@@ -100,14 +107,14 @@ Plans:
   - 검색 폼 접기/펼치기 (한국 행정 시스템 관례)
   - 조회 버튼 클릭 시 1페이지로 리셋
 - 사망자 등록/수정 Modal (주민번호 체크섬 검증, 날짜 형식 YYYY.MM.DD)
-- 사망 기록 상태 관리: 등록→확정→보훈청통보완료
+- 사망 기록 상태 관리: 등록->확정->보훈청통보완료
 - Apache POI SXSSFWorkbook Excel 내보내기 (주민번호 마스킹 적용)
 - 심사 이력 연계: 전공사상심사 결과로 사망구분 자동 갱신
 
 **Key Pattern:**
 ```
-검색 폼(Form) + [조회] 버튼 → 서버사이드 Table
-등록 버튼 → Modal → POST API → invalidateQueries → 목록 자동 갱신
+검색 폼(Form) + [조회] 버튼 -> 서버사이드 Table
+등록 버튼 -> Modal -> POST API -> invalidateQueries -> 목록 자동 갱신
 ```
 
 ---
@@ -122,7 +129,7 @@ Plans:
 - 상이자 CRUD REST API (Phase 3과 동일 패턴)
 - 상이구분: 전공상/공상/일반상이 (boolean 아닌 3-value enum)
 - 보훈청명 코드 테이블 연동 (전국 보훈청/보훈지청 Select)
-- 상이 기록 상태 관리: 등록→심사중→확정→보훈청통보완료
+- 상이 기록 상태 관리: 등록->심사중->확정->보훈청통보완료
 - 상이자 현황 목록 화면 + 등록/수정 Modal
 - Apache POI Excel 내보내기
 
@@ -142,7 +149,7 @@ Plans:
   - 수정 시마다 변경 전 스냅샷을 이력 테이블에 자동 저장
 - 심사 결과 분류: 전공상/공상/기각/보류
 - 보훈청 통보 일시 기록 필드
-- 심사 결과 → 사망자/상이자 분류 자동 반영 로직
+- 심사 결과 -> 사망자/상이자 분류 자동 반영 로직
 - 전공사상심사 현황 목록 화면 + 등록/수정 Modal
 - 심사차수별 이력 조회 화면 (타임라인 UI)
 - Excel 내보내기
@@ -165,7 +172,7 @@ Plans:
   5. 사망자 현황 보고서
   6. 전사망자 확인증 발급대장
 - `DocumentGenerationService` — 데이터 조회 + JasperReports 렌더링
-- 발급 목적 입력 팝업 (출력 전 필수 입력) → `TB_DOCUMENT_ISSUE` 자동 기록
+- 발급 목적 입력 팝업 (출력 전 필수 입력) -> `TB_DOCUMENT_ISSUE` 자동 기록
 - 인쇄 미리보기 (react-to-print, A4 Portrait CSS 설정)
 - 문서 발급 이력 조회 화면
 
