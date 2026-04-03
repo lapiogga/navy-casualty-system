@@ -172,22 +172,30 @@ Plans:
 
 ## Phase 6: 공식 문서 출력
 
-**Goal:** JasperReports 기반 공식 문서 6종 출력 기능을 완성한다.
+**Goal:** JasperReports 기반 공식 문서 7종 출력 기능을 완성한다.
 
 **Requirements:** DOCU-01~09
 
+**Plans:** 3 plans
+
+Plans:
+- [ ] 06-01-PLAN.md — 백엔드 인프라 (JasperReports 의존성 + NanumGothic 폰트 + DocumentIssue 엔티티 + DocumentGenerationService + DocumentController + jrxml 7종)
+- [ ] 06-02-PLAN.md — 프론트엔드 (문서 출력 버튼 + 발급 목적 Modal + PDF 미리보기/인쇄 + 발급 이력 조회)
+- [ ] 06-03-PLAN.md — 통합 테스트 (JasperReports 렌더링 + 한글 폰트 검증 + REST API 테스트)
+
 **Key Deliverables:**
 - JasperReports 6.21.3 통합 설정 (iText 의존성 없는 LGPL 버전)
-- 공식 문서 6종 JasperReports 템플릿(.jrxml):
+- 공식 문서 7종 JasperReports 템플릿(.jrxml):
   1. 국가유공자 요건 해당사실 확인서 (사망자용)
   2. 국가유공자 요건 해당사실 확인서 (상이자용)
   3. 전공사상심사결과서
   4. 순직/사망확인서
   5. 사망자 현황 보고서
-  6. 전사망자 확인증 발급대장
+  6. 상이자 현황 보고서
+  7. 전사망자 확인증 발급대장
 - `DocumentGenerationService` — 데이터 조회 + JasperReports 렌더링
 - 발급 목적 입력 팝업 (출력 전 필수 입력) -> `TB_DOCUMENT_ISSUE` 자동 기록
-- 인쇄 미리보기 (react-to-print, A4 Portrait CSS 설정)
+- 인쇄 미리보기 (PDF iframe + 인쇄/다운로드 버튼)
 - 문서 발급 이력 조회 화면
 
 **Critical Pre-condition:** 해군 공식 양식 원본(PDF/Word) 입수 후 착수. 양식 확정 없이 시작 불가.
