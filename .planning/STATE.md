@@ -2,22 +2,22 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: — 해군 사상자 관리 전산 시스템 초도 운영
-status: Ready to plan
-stopped_at: Completed 06-03-PLAN.md
-last_updated: "2026-04-03T15:40:52.413Z"
+status: Ready to execute
+stopped_at: Completed 07-01-PLAN.md
+last_updated: "2026-04-03T17:18:50.676Z"
 progress:
   total_phases: 8
   completed_phases: 6
-  total_plans: 21
-  completed_plans: 21
+  total_plans: 23
+  completed_plans: 22
 ---
 
 # Execution State
 
 ## Current Position
 
-Phase: 7
-Plan: Not started
+Phase: 07 (statistics) — EXECUTING
+Plan: 2 of 2
 
 ## Progress
 
@@ -77,6 +77,9 @@ Plan: Not started
 - [Phase 06]: URL.createObjectURL + useEffect cleanup으로 Blob URL 메모리 누수 방지
 - [Phase 06]: DocumentGenerationServiceTest: Mockito 단위 테스트 + awt.ignore.missing.font=true 설정
 - [Phase 06]: NanumGothic 폰트 검증: TTF 직접 로드 + createFont 방식 (PDF 바이너리 검색 대신)
+- [Phase 07]: QueryDSL Projections.constructor로 집계 결과 DTO 직접 매핑 (N+1 방지)
+- [Phase 07]: CaseBuilder로 NULL branch/unit을 미분류로 처리 (leftJoin + COALESCE 대체)
+- [Phase 07]: @WebMvcTest 슬라이스 테스트로 컨트롤러 검증 (PiiEncryptionConverter 환경변수 의존 회피)
 
 ## Blockers
 
@@ -85,4 +88,4 @@ None
 ## Last Session
 
 - **Timestamp:** 2026-04-03T00:00:00Z
-- **Stopped At:** Completed 06-03-PLAN.md
+- **Stopped At:** Completed 07-01-PLAN.md
