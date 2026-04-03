@@ -61,6 +61,28 @@ public class GlobalExceptionHandler {
     }
 
     /**
+     * 비즈니스 검증 실패 시 409 응답 (중복 등록 등).
+     */
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<ApiResponse<Void>> handleIllegalArgumentException(
+            IllegalArgumentException ex) {
+        return ResponseEntity
+                .status(HttpStatus.CONFLICT)
+                .body(ApiResponse.error(409, ex.getMessage()));
+    }
+
+    /**
+     * 상태 전이 실패 시 400 응답.
+     */
+    @ExceptionHandler(IllegalStateException.class)
+    public ResponseEntity<ApiResponse<Void>> handleIllegalStateException(
+            IllegalStateException ex) {
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(ApiResponse.error(400, ex.getMessage()));
+    }
+
+    /**
      * 기타 예외 시 500 응답.
      */
     @ExceptionHandler(Exception.class)
