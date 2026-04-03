@@ -7,11 +7,13 @@ import com.navy.casualty.code.entity.DeathCode;
 import com.navy.casualty.code.entity.DeathType;
 import com.navy.casualty.code.entity.RankCode;
 import com.navy.casualty.code.entity.UnitCode;
+import com.navy.casualty.code.entity.VeteransOffice;
 import com.navy.casualty.code.repository.BranchCodeRepository;
 import com.navy.casualty.code.repository.DeathCodeRepository;
 import com.navy.casualty.code.repository.DeathTypeRepository;
 import com.navy.casualty.code.repository.RankCodeRepository;
 import com.navy.casualty.code.repository.UnitCodeRepository;
+import com.navy.casualty.code.repository.VeteransOfficeRepository;
 import com.navy.casualty.common.dto.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -34,6 +36,7 @@ public class CodeController {
     private final DeathTypeRepository deathTypeRepository;
     private final DeathCodeRepository deathCodeRepository;
     private final UnitCodeRepository unitCodeRepository;
+    private final VeteransOfficeRepository veteransOfficeRepository;
 
     @GetMapping("/ranks")
     public ResponseEntity<ApiResponse<List<RankCode>>> getRanks() {
@@ -58,5 +61,10 @@ public class CodeController {
     @GetMapping("/units")
     public ResponseEntity<ApiResponse<List<UnitCode>>> getUnits() {
         return ResponseEntity.ok(ApiResponse.ok(unitCodeRepository.findAll()));
+    }
+
+    @GetMapping("/veterans-offices")
+    public ResponseEntity<ApiResponse<List<VeteransOffice>>> getVeteransOffices() {
+        return ResponseEntity.ok(ApiResponse.ok(veteransOfficeRepository.findAll()));
     }
 }
