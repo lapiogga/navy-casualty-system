@@ -2,22 +2,22 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: — 해군 사상자 관리 전산 시스템 초도 운영
-status: Ready to plan
-stopped_at: Completed 05-03-PLAN.md
-last_updated: "2026-04-03T04:15:29.446Z"
+status: Ready to execute
+stopped_at: Completed 06-01-PLAN.md
+last_updated: "2026-04-03T15:08:04.472Z"
 progress:
   total_phases: 8
   completed_phases: 5
-  total_plans: 18
-  completed_plans: 18
+  total_plans: 21
+  completed_plans: 19
 ---
 
 # Execution State
 
 ## Current Position
 
-Phase: 6
-Plan: Not started
+Phase: 06 (document-output) — EXECUTING
+Plan: 2 of 3
 
 ## Progress
 
@@ -70,6 +70,9 @@ Plan: Not started
 - [Phase 05]: Dead/Wounded 패턴 100% 복제 + 심사 고유 필드(reviewRound, classification, unitReviewResult) 반영
 - [Phase 05]: Ant Design Timeline + Drawer로 심사 이력 시각화, 보훈청 통보 Modal.confirm 패턴
 - [Phase 05]: DeadExcelService 패턴 100% 복제 + 심사 고유 컬럼(심사차수/심사일자/병명/소속부대심사결과/분류/보훈청통보일) 반영
+- [Phase 06-document-output]: JasperReports 6.21.3 LGPL (iText 무의존) + ConcurrentHashMap .jrxml 캐싱
+- [Phase 06-document-output]: 리스트형 보고서 JRBeanCollectionDataSource + Map<String,Object> 행 변환 패턴
+- [Phase 06-document-output]: Content-Disposition filename*=UTF-8 인코딩으로 한글 PDF 파일명 처리
 
 ## Blockers
 
@@ -78,4 +81,4 @@ None
 ## Last Session
 
 - **Timestamp:** 2026-04-03T00:00:00Z
-- **Stopped At:** Completed 05-03-PLAN.md
+- **Stopped At:** Completed 06-01-PLAN.md
