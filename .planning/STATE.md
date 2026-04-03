@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: — 해군 사상자 관리 전산 시스템 초도 운영
 status: Ready to execute
-stopped_at: Completed 06-01-PLAN.md
-last_updated: "2026-04-03T15:08:04.472Z"
+stopped_at: Completed 06-02-PLAN.md
+last_updated: "2026-04-03T15:18:07.340Z"
 progress:
   total_phases: 8
   completed_phases: 5
   total_plans: 21
-  completed_plans: 19
+  completed_plans: 20
 ---
 
 # Execution State
@@ -17,7 +17,7 @@ progress:
 ## Current Position
 
 Phase: 06 (document-output) — EXECUTING
-Plan: 2 of 3
+Plan: 3 of 3
 
 ## Progress
 
@@ -73,6 +73,8 @@ Plan: 2 of 3
 - [Phase 06-document-output]: JasperReports 6.21.3 LGPL (iText 무의존) + ConcurrentHashMap .jrxml 캐싱
 - [Phase 06-document-output]: 리스트형 보고서 JRBeanCollectionDataSource + Map<String,Object> 행 변환 패턴
 - [Phase 06-document-output]: Content-Disposition filename*=UTF-8 인코딩으로 한글 PDF 파일명 처리
+- [Phase 06]: iframe + contentWindow.print()로 PDF 인쇄 (react-to-print 미사용)
+- [Phase 06]: URL.createObjectURL + useEffect cleanup으로 Blob URL 메모리 누수 방지
 
 ## Blockers
 
@@ -81,4 +83,4 @@ None
 ## Last Session
 
 - **Timestamp:** 2026-04-03T00:00:00Z
-- **Stopped At:** Completed 06-01-PLAN.md
+- **Stopped At:** Completed 06-02-PLAN.md
