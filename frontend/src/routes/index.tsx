@@ -1,6 +1,7 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import AppLayout from '../components/layout/AppLayout';
 import PlaceholderPage from '../components/layout/PlaceholderPage';
+import DeadListPage from '../pages/dead/DeadListPage';
 import ErrorPage from '../pages/ErrorPage';
 import NotFoundPage from '../pages/NotFoundPage';
 import LoginPage from '../pages/LoginPage';
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       { index: true, element: <Navigate to="/dead" replace /> },
-      { path: 'dead', element: <PlaceholderPage title="사망자 관리" /> },
+      { path: 'dead', element: <DeadListPage /> },
       { path: 'wounded', element: <PlaceholderPage title="상이자 관리" /> },
       { path: 'review', element: <PlaceholderPage title="전공사상심사" /> },
       { path: 'document', element: <PlaceholderPage title="문서 출력" /> },
