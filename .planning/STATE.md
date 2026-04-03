@@ -2,12 +2,12 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: — 해군 사상자 관리 전산 시스템 초도 운영
-status: Executing Phase 03
+status: Ready to plan
 stopped_at: Completed 03-03-PLAN.md
-last_updated: "2026-04-03T01:42:46.400Z"
+last_updated: "2026-04-03T01:53:29.716Z"
 progress:
   total_phases: 8
-  completed_phases: 2
+  completed_phases: 3
   total_plans: 12
   completed_plans: 12
 ---
@@ -16,8 +16,8 @@ progress:
 
 ## Current Position
 
-Phase: 03 (dead-management) — EXECUTING
-Plan: 3 of 3
+Phase: 4
+Plan: Not started
 
 ## Progress
 
