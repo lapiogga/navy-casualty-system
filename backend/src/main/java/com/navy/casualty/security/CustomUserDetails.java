@@ -25,6 +25,7 @@ public class CustomUserDetails implements UserDetails {
     private final String role;
     private final boolean enabled;
     private final boolean accountLocked;
+    private final boolean passwordChanged;
 
     /**
      * User 엔티티로부터 CustomUserDetails를 생성한다.
@@ -37,7 +38,8 @@ public class CustomUserDetails implements UserDetails {
                 user.getName(),
                 user.getRole(),
                 user.isEnabled(),
-                user.isAccountLocked()
+                user.isAccountLocked(),
+                user.isPasswordChanged()
         );
     }
 
