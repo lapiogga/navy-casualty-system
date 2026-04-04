@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: — 해군 사상자 관리 전산 시스템 초도 운영
 status: Ready to plan
-stopped_at: Completed 08-03-PLAN.md
-last_updated: "2026-04-04T08:55:21.991Z"
+stopped_at: Completed 08-02-PLAN.md
+last_updated: "2026-04-04T09:01:15Z"
 progress:
   total_phases: 8
   completed_phases: 7
   total_plans: 30
-  completed_plans: 24
+  completed_plans: 25
 ---
 
 # Execution State
@@ -84,6 +84,9 @@ Plan: Not started
 - [Phase 07]: dead.ts useUnits 훅 재사용으로 부대별 명부 필터 구현 (새 API 불필요)
 - [Phase 08]: admin 패키지 신규 생성 (AdminController, DataCheckResponse) - 기존 user 패키지와 관심사 분리
 - [Phase 08]: PasswordGuard 컴포넌트 분리 - passwordChanged=false 시 /change-password 리다이렉트
+- [Phase 08]: TLS 기본 비활성화 (ssl.enabled=false) - 환경변수로 활성화 전환
+- [Phase 08]: StartupValidator 실패 시 경고 로그만 출력, 기동 차단 안 함
+- [Phase 08]: Actuator health만 노출, show-details: never
 
 ## Blockers
 
@@ -92,4 +95,4 @@ None
 ## Last Session
 
 - **Timestamp:** 2026-04-03T00:00:00Z
-- **Stopped At:** Completed 08-03-PLAN.md
+- **Stopped At:** Completed 08-02-PLAN.md
