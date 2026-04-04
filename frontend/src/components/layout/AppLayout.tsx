@@ -1,5 +1,5 @@
-import { useMemo, useState } from 'react';
-import { Layout, Menu, Button, Space } from 'antd';
+import { Suspense, useMemo, useState } from 'react';
+import { Layout, Menu, Button, Space, Spin } from 'antd';
 import {
   TeamOutlined,
   MedicineBoxOutlined,
@@ -131,7 +131,15 @@ export default function AppLayout() {
           </Space>
         </Header>
         <Content style={{ margin: 16, background: '#fff', padding: 24 }}>
-          <Outlet />
+          <Suspense
+            fallback={
+              <div style={{ display: 'flex', justifyContent: 'center', padding: 100 }}>
+                <Spin size="large" />
+              </div>
+            }
+          >
+            <Outlet />
+          </Suspense>
         </Content>
       </Layout>
     </Layout>

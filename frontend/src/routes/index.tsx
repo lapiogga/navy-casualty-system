@@ -1,21 +1,24 @@
+import { lazy } from 'react';
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import AppLayout from '../components/layout/AppLayout';
-import DeadListPage from '../pages/dead/DeadListPage';
-import WoundedListPage from '../pages/wounded/WoundedListPage';
-import ReviewListPage from '../pages/review/ReviewListPage';
-import DocumentIssueHistoryPage from '../pages/document/DocumentIssueHistoryPage';
-import BranchStatPage from '../pages/statistics/BranchStatPage';
-import MonthlyStatPage from '../pages/statistics/MonthlyStatPage';
-import YearlyStatPage from '../pages/statistics/YearlyStatPage';
-import UnitStatPage from '../pages/statistics/UnitStatPage';
-import UnitRosterPage from '../pages/statistics/UnitRosterPage';
-import AllRosterPage from '../pages/statistics/AllRosterPage';
 import ErrorPage from '../pages/ErrorPage';
 import NotFoundPage from '../pages/NotFoundPage';
 import LoginPage from '../pages/LoginPage';
-import ChangePasswordPage from '../pages/ChangePasswordPage';
-import AdminPage from '../pages/admin/AdminPage';
 import { AuthGuard, AdminGuard, PasswordGuard } from '../components/auth/AuthGuard';
+
+// lazy imports (페이지 컴포넌트만)
+const DeadListPage = lazy(() => import('../pages/dead/DeadListPage'));
+const WoundedListPage = lazy(() => import('../pages/wounded/WoundedListPage'));
+const ReviewListPage = lazy(() => import('../pages/review/ReviewListPage'));
+const DocumentIssueHistoryPage = lazy(() => import('../pages/document/DocumentIssueHistoryPage'));
+const BranchStatPage = lazy(() => import('../pages/statistics/BranchStatPage'));
+const MonthlyStatPage = lazy(() => import('../pages/statistics/MonthlyStatPage'));
+const YearlyStatPage = lazy(() => import('../pages/statistics/YearlyStatPage'));
+const UnitStatPage = lazy(() => import('../pages/statistics/UnitStatPage'));
+const UnitRosterPage = lazy(() => import('../pages/statistics/UnitRosterPage'));
+const AllRosterPage = lazy(() => import('../pages/statistics/AllRosterPage'));
+const AdminPage = lazy(() => import('../pages/admin/AdminPage'));
+const ChangePasswordPage = lazy(() => import('../pages/ChangePasswordPage'));
 
 const router = createBrowserRouter([
   {
