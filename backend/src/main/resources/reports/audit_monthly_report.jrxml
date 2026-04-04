@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports
+    http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+  name="audit_monthly_report"
+  pageWidth="595" pageHeight="842"
+  leftMargin="50" rightMargin="50" topMargin="50" bottomMargin="50"
+  columnWidth="495">
+
+  <parameter name="reportTitle" class="java.lang.String"/>
+  <parameter name="totalCount" class="java.lang.String"/>
+  <parameter name="reportPeriod" class="java.lang.String"/>
+  <parameter name="userDataSource" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+  <parameter name="deleteDataSource" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+
+  <field name="actionType" class="java.lang.String"/>
+  <field name="actionCount" class="java.lang.String"/>
+
+  <title>
+    <band height="100">
+      <textField>
+        <reportElement x="0" y="10" width="495" height="30"/>
+        <textElement textAlignment="Center" verticalAlignment="Middle">
+          <font fontName="NanumGothic" size="16" isBold="true"/>
+        </textElement>
+        <textFieldExpression><![CDATA[$P{reportTitle}]]></textFieldExpression>
+      </textField>
+      <staticText>
+        <reportElement x="0" y="50" width="100" height="20"/>
+        <textElement verticalAlignment="Middle">
+          <font fontName="NanumGothic" size="10" isBold="true"/>
+        </textElement>
+        <text><![CDATA[총 접근 건수:]]></text>
+      </staticText>
+      <textField>
+        <reportElement x="100" y="50" width="100" height="20"/>
+        <textElement verticalAlignment="Middle">
+          <font fontName="NanumGothic" size="10"/>
+        </textElement>
+        <textFieldExpression><![CDATA[$P{totalCount} + " 건"]]></textFieldExpression>
+      </textField>
+      <staticText>
+        <reportElement x="0" y="70" width="100" height="20"/>
+        <textElement verticalAlignment="Middle">
+          <font fontName="NanumGothic" size="10" isBold="true"/>
+        </textElement>
+        <text><![CDATA[조회 기간:]]></text>
+      </staticText>
+      <textField>
+        <reportElement x="100" y="70" width="200" height="20"/>
+        <textElement verticalAlignment="Middle">
+          <font fontName="NanumGothic" size="10"/>
+        </textElement>
+        <textFieldExpression><![CDATA[$P{reportPeriod}]]></textFieldExpression>
+      </textField>
+    </band>
+  </title>
+
+  <columnHeader>
+    <band height="35">
+      <staticText>
+        <reportElement x="0" y="10" width="495" height="20"/>
+        <textElement verticalAlignment="Middle">
+          <font fontName="NanumGothic" size="11" isBold="true"/>
+        </textElement>
+        <text><![CDATA[1. 작업 유형별 건수]]></text>
+      </staticText>
+    </band>
+  </columnHeader>
+
+  <detail>
+    <band height="20">
+      <textField isBlankWhenNull="true">
+        <reportElement x="0" y="0" width="200" height="20"/>
+        <box><pen lineWidth="0.5"/></box>
+        <textElement textAlignment="Center" verticalAlignment="Middle">
+          <font fontName="NanumGothic" size="9"/>
+        </textElement>
+        <textFieldExpression><![CDATA[$F{actionType}]]></textFieldExpression>
+      </textField>
+      <textField isBlankWhenNull="true">
+        <reportElement x="200" y="0" width="150" height="20"/>
+        <box><pen lineWidth="0.5"/></box>
+        <textElement textAlignment="Center" verticalAlignment="Middle">
+          <font fontName="NanumGothic" size="9"/>
+        </textElement>
+        <textFieldExpression><![CDATA[$F{actionCount}]]></textFieldExpression>
+      </textField>
+    </band>
+  </detail>
+
+  <summary>
+    <band height="40">
+      <staticText>
+        <reportElement x="0" y="10" width="495" height="20"/>
+        <textElement verticalAlignment="Middle">
+          <font fontName="NanumGothic" size="11" isBold="true"/>
+        </textElement>
+        <text><![CDATA[2. 사용자별 활동 (상위 10명) / 3. 삭제 이력 - 별도 서브리포트 참조]]></text>
+      </staticText>
+    </band>
+  </summary>
+
+  <pageFooter>
+    <band height="30">
+      <textField>
+        <reportElement x="200" y="5" width="95" height="20"/>
+        <textElement textAlignment="Right" verticalAlignment="Middle">
+          <font fontName="NanumGothic" size="8"/>
+        </textElement>
+        <textFieldExpression><![CDATA[$V{PAGE_NUMBER} + " / "]]></textFieldExpression>
+      </textField>
+      <textField evaluationTime="Report">
+        <reportElement x="295" y="5" width="50" height="20"/>
+        <textElement verticalAlignment="Middle">
+          <font fontName="NanumGothic" size="8"/>
+        </textElement>
+        <textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+      </textField>
+    </band>
+  </pageFooter>
+</jasperReport>
