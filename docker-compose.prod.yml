@@ -2,16 +2,29 @@
 # 사용법: docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d
 services:
   app:
-    restart: always
+    restart: unless-stopped
     environment:
       SPRING_PROFILES_ACTIVE: prod
     volumes:
       - ./certs:/app/certs:ro
-    # INFRA-05: TLS 활성화는 Phase 8에서 아래 환경변수 설정
-    # SERVER_SSL_KEY_STORE: /app/certs/keystore.p12
-    # SERVER_SSL_KEY_STORE_PASSWORD: ${SSL_KEYSTORE_PASSWORD}
-    # SERVER_SSL_KEY_STORE_TYPE: PKCS12
+      - ./logs:/app/logs
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    # TLS 활성화 시 아래 주석 해제
+    # environment:
+    #   SERVER_SSL_ENABLED: "true"
+    #   SSL_KEYSTORE_PASSWORD: ${SSL_KEYSTORE_PASSWORD}
 
   db:
+    restart: unless-stopped
     # 운영 환경에서는 외부 포트 노출하지 않음
     ports: !reset []
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-casualty}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
