@@ -236,7 +236,7 @@ Plans:
 
 **Requirements:** 전 Phase 검증, INFRA-01~05 최종 확인
 
-**Plans:** 2/8 plans executed
+**Plans:** 6/8 plans executed
 
 Plans:
 - [x] 08-01-PLAN.md — 코드 품질 정리 + Flyway 마이그레이션 체인 검증 + 버전 관리 (SemVer + CHANGELOG)
@@ -244,7 +244,7 @@ Plans:
 - [x] 08-03-PLAN.md — 초기 데이터 적재 (V18) + 비밀번호 변경 강제 (V19) + 데이터 검증 API
 - [x] 08-04-PLAN.md — Excel 임포트 (사망자/상이자/심사) + 감사 로그 파티셔닝 + 월별 감사 보고서
 - [x] 08-05-PLAN.md — 프론트엔드 최적화 (lazy route code splitting + 번들 분석 + 정적 자산 캐시)
-- [ ] 08-06-PLAN.md — 통합 테스트 7종 + Playwright E2E 3종 + OWASP ZAP + JMeter 성능 + 보안 체크리스트
+- [x] 08-06-PLAN.md — 통합 테스트 7종 + Playwright E2E 3종 + OWASP ZAP + JMeter 성능 + 보안 체크리스트
 - [ ] 08-07-PLAN.md — 배포 패키징 (deploy.sh + generate-cert.sh + backup/restore.sh + package.sh + .env.example)
 - [ ] 08-08-PLAN.md — 운영 문서 (배포 절차서 + 운영자 매뉴얼 + 교육 슬라이드)
 
