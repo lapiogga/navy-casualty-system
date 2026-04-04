@@ -47,4 +47,6 @@ dependencies {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+    // 통합 테스트용 PII 암호화 키 (AES-256 테스트 전용)
+    environment("PII_ENCRYPTION_KEY", "WOPZUdJgiktEQgufsA5aTzZwU/KgAHC8B8LIJmUSCh4=")
 }
