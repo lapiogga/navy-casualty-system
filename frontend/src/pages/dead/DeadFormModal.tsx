@@ -50,7 +50,7 @@ export default function DeadFormModal({ open, onClose, editRecord }: DeadFormMod
     };
 
     if (isEdit && editRecord) {
-      const { serviceNumber: _, ...updateData } = payload;
+      const { serviceNumber: _sn, ...updateData } = payload;
       updateDead.mutate(
         { id: editRecord.id, data: updateData },
         { onSuccess: () => { form.resetFields(); onClose(); } },

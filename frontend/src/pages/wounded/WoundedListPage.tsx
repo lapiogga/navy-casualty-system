@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { Card, Form, Input, Select, DatePicker, Button, Table, Tag, Space, Dropdown } from 'antd';
+import { Card, Form, Input, Select, DatePicker, Button, Table, Tag, Space } from 'antd';
 import { PlusOutlined, SearchOutlined, ReloadOutlined, DownOutlined, UpOutlined, EditOutlined, DeleteOutlined, DownloadOutlined, PrinterOutlined, FileTextOutlined } from '@ant-design/icons';
 import type { ColumnsType } from 'antd/es/table';
 import dayjs from 'dayjs';
@@ -65,7 +65,7 @@ export default function WoundedListPage() {
   const { data: branches } = useBranches();
   const { data: ranks } = useRanks();
   const { data: units } = useUnits();
-  const { data: veteransOffices } = useVeteransOffices();
+  const { data: _veteransOffices } = useVeteransOffices();
   const updateStatus = useUpdateWoundedStatus();
   const exportExcel = useExportWoundedExcel();
 

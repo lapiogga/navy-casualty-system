@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { Modal, Button, Space } from 'antd';
 import { PrinterOutlined, DownloadOutlined } from '@ant-design/icons';
 import { DocumentType, DOCUMENT_TYPE_LABELS } from '../../types/document';
@@ -14,19 +14,16 @@ interface Props {
  * iframe으로 PDF를 표시하고, 인쇄/다운로드 버튼을 제공한다.
  */
 export default function DocumentPreviewModal({ pdfBlob, documentType, onClose }: Props) {
-  const [blobUrl, setBlobUrl] = useState<string | null>(null);
+  const blobUrl = useMemo(() => (pdfBlob ? URL.createObjectURL(pdfBlob) : null), [pdfBlob]);
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
   useEffect(() => {
-    if (pdfBlob) {
-      const url = URL.createObjectURL(pdfBlob);
-      setBlobUrl(url);
-      return () => {
-        URL.revokeObjectURL(url);
-      };
-    }
-    setBlobUrl(null);
-  }, [pdfBlob]);
+    return () => {
+      if (blobUrl) {
+        URL.revokeObjectURL(blobUrl);
+      }
+    };
+  }, [blobUrl]);
 
   const handlePrint = () => {
     iframeRef.current?.contentWindow?.print();

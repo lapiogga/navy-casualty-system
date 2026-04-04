@@ -62,7 +62,7 @@ export default function ReviewFormModal({ open, onClose, editRecord }: ReviewFor
     };
 
     if (isEdit && editRecord) {
-      const { serviceNumber: _, ...updateData } = payload;
+      const { serviceNumber: _sn, ...updateData } = payload;
       updateReview.mutate(
         { id: editRecord.id, data: updateData },
         { onSuccess: () => { form.resetFields(); onClose(); } },

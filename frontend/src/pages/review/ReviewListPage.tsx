@@ -26,7 +26,6 @@ import {
   useExportReviewExcel,
 } from '../../api/review';
 import type { ReviewRecord, ReviewSearchParams, ReviewClassification } from '../../types/review';
-import { CLASSIFICATION_LABELS } from '../../types/review';
 import { DocumentType } from '../../types/document';
 import ReviewFormModal from './ReviewFormModal';
 import ReviewDeleteModal from './ReviewDeleteModal';

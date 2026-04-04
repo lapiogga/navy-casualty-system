@@ -61,7 +61,7 @@ export default function WoundedFormModal({ open, onClose, editRecord }: WoundedF
     };
 
     if (isEdit && editRecord) {
-      const { serviceNumber: _, ...updateData } = payload;
+      const { serviceNumber: _sn, ...updateData } = payload;
       updateWounded.mutate(
         { id: editRecord.id, data: updateData },
         { onSuccess: () => { form.resetFields(); onClose(); } },
