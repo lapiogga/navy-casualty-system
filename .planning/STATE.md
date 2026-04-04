@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: — 해군 사상자 관리 전산 시스템 초도 운영
 status: Ready to execute
-stopped_at: Completed 08-07-PLAN.md
-last_updated: "2026-04-04T10:08:17.609Z"
+stopped_at: Completed 08-08-PLAN.md
+last_updated: "2026-04-04T10:12:38.518Z"
 progress:
   total_phases: 8
-  completed_phases: 7
+  completed_phases: 8
   total_plans: 31
-  completed_plans: 30
+  completed_plans: 31
 ---
 
 # Execution State
@@ -17,7 +17,7 @@ progress:
 ## Current Position
 
 Phase: 08 (verification-deploy) — EXECUTING
-Plan: 7 of 8
+Plan: 8 of 8
 
 ## Progress
 
@@ -99,6 +99,7 @@ Plan: 7 of 8
 - [Phase 08]: H2 환경 JasperReports 500 허용 (통합 테스트 환경 제한)
 - [Phase 08]: ReviewFlow: 보훈청 통보 전 4단계 상태 전이 필수 검증
 - [Phase 08]: backup.sh DB 기본값을 docker-compose.yml 환경변수와 정합
+- [Phase 08]: Marp 형식 슬라이드 + pandoc beamer 대체 경로로 오프라인 환경 대응
 
 ## Blockers
 
@@ -107,4 +108,4 @@ None
 ## Last Session
 
 - **Timestamp:** 2026-04-04T00:00:00Z
-- **Stopped At:** Completed 08-07-PLAN.md
+- **Stopped At:** Completed 08-08-PLAN.md

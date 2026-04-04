@@ -246,7 +246,7 @@ Plans:
 - [x] 08-05-PLAN.md — 프론트엔드 최적화 (lazy route code splitting + 번들 분석 + 정적 자산 캐시)
 - [x] 08-06-PLAN.md — 통합 테스트 7종 + Playwright E2E 3종 + OWASP ZAP + JMeter 성능 + 보안 체크리스트
 - [x] 08-07-PLAN.md — 배포 패키징 (deploy.sh + generate-cert.sh + backup/restore.sh + package.sh + .env.example)
-- [ ] 08-08-PLAN.md — 운영 문서 (배포 절차서 + 운영자 매뉴얼 + 교육 슬라이드)
+- [x] 08-08-PLAN.md — 운영 문서 (배포 절차서 + 운영자 매뉴얼 + 교육 슬라이드)
 
 **Key Deliverables:**
 - 전체 기능 E2E 통합 테스트 (핵심 시나리오 기준)
