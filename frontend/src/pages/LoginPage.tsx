@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Form, Input, Button, Alert } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
@@ -10,17 +10,28 @@ interface LoginFormValues {
 }
 
 export default function LoginPage() {
-  const { login } = useAuth();
+  const { login, user } = useAuth();
   const navigate = useNavigate();
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+
+  // 이미 로그인된 상태이면 passwordChanged 여부에 따라 리다이렉트
+  useEffect(() => {
+    if (user) {
+      if (!user.passwordChanged) {
+        navigate('/change-password', { replace: true });
+      } else {
+        navigate('/dead', { replace: true });
+      }
+    }
+  }, [user, navigate]);
 
   const onFinish = async (values: LoginFormValues) => {
     setError(null);
     setLoading(true);
     try {
       await login(values.username, values.password);
-      navigate('/dead', { replace: true });
+      // login이 성공하면 user 상태가 업데이트되고 useEffect에서 리다이렉트
     } catch {
       setError('사용자 ID 또는 비밀번호가 올바르지 않습니다');
     } finally {

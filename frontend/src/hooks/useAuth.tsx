@@ -14,6 +14,7 @@ interface AuthContextValue {
   loading: boolean;
   login: (username: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
+  refreshUser: () => Promise<void>;
   isAdmin: boolean;
   isManagerOrAbove: boolean;
   hasRole: (role: Role) => boolean;
@@ -47,6 +48,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     checkSession();
   }, [checkSession]);
 
+  const refreshUser = useCallback(async () => {
+    try {
+      const res = await apiClient.get('/auth/me');
+      setUser(res.data.data);
+    } catch {
+      setUser(null);
+    }
+  }, []);
+
   const login = useCallback(async (username: string, password: string) => {
     const res = await apiClient.post('/auth/login', { username, password });
     setUser(res.data.data);
@@ -73,7 +83,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   return (
     <AuthContext.Provider
-      value={{ user, loading, login, logout, isAdmin, isManagerOrAbove, hasRole }}
+      value={{ user, loading, login, logout, refreshUser, isAdmin, isManagerOrAbove, hasRole }}
     >
       {children}
     </AuthContext.Provider>

@@ -13,15 +13,26 @@ import AllRosterPage from '../pages/statistics/AllRosterPage';
 import ErrorPage from '../pages/ErrorPage';
 import NotFoundPage from '../pages/NotFoundPage';
 import LoginPage from '../pages/LoginPage';
+import ChangePasswordPage from '../pages/ChangePasswordPage';
 import AdminPage from '../pages/admin/AdminPage';
-import { AuthGuard, AdminGuard } from '../components/auth/AuthGuard';
+import { AuthGuard, AdminGuard, PasswordGuard } from '../components/auth/AuthGuard';
 
 const router = createBrowserRouter([
+  {
+    path: '/change-password',
+    element: (
+      <AuthGuard>
+        <ChangePasswordPage />
+      </AuthGuard>
+    ),
+  },
   {
     path: '/',
     element: (
       <AuthGuard>
-        <AppLayout />
+        <PasswordGuard>
+          <AppLayout />
+        </PasswordGuard>
       </AuthGuard>
     ),
     errorElement: <ErrorPage />,

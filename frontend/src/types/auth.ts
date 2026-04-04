@@ -4,6 +4,7 @@ export interface AuthUser {
   username: string;
   name: string;
   role: Role;
+  passwordChanged: boolean;
 }
 
 export interface LoginRequest {

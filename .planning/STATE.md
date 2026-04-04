@@ -3,8 +3,8 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: — 해군 사상자 관리 전산 시스템 초도 운영
 status: Ready to execute
-stopped_at: Completed 08-01-PLAN.md
-last_updated: "2026-04-04T08:49:15.472Z"
+stopped_at: Completed 08-03-PLAN.md
+last_updated: "2026-04-04T08:55:21.991Z"
 progress:
   total_phases: 8
   completed_phases: 7
@@ -82,9 +82,14 @@ Plan: 2 of 8
 - [Phase 07]: @WebMvcTest 슬라이스 테스트로 컨트롤러 검증 (PiiEncryptionConverter 환경변수 의존 회피)
 - [Phase 07]: @ant-design/charts Column 바 차트 + Table 동일 데이터 공유 패턴 (STAT-07 중복 호출 방지)
 - [Phase 07]: dead.ts useUnits 훅 재사용으로 부대별 명부 필터 구현 (새 API 불필요)
+<<<<<<< HEAD
 - [Phase 08]: V6 -> V13 rename으로 Flyway 마이그레이션 체인 정합성 확보
 - [Phase 08]: ESLint flat config에 no-unused-vars error + no-console warn 규칙 추가
 - [Phase 08]: SemVer v1.0.0 전체 컴포넌트 동기 선언 (backend/frontend/application.yml)
+=======
+- [Phase 08]: admin 패키지 신규 생성 (AdminController, DataCheckResponse) - 기존 user 패키지와 관심사 분리
+- [Phase 08]: PasswordGuard 컴포넌트 분리 - passwordChanged=false 시 /change-password 리다이렉트
+>>>>>>> worktree-agent-a238142c
 
 ## Blockers
 
@@ -93,4 +98,8 @@ None
 ## Last Session
 
 - **Timestamp:** 2026-04-03T00:00:00Z
+<<<<<<< HEAD
 - **Stopped At:** Completed 08-01-PLAN.md
+=======
+- **Stopped At:** Completed 08-03-PLAN.md
+>>>>>>> worktree-agent-a238142c

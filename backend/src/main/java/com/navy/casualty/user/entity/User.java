@@ -61,6 +61,10 @@ public class User extends BaseAuditEntity {
     @Column(name = "last_login_at")
     private LocalDateTime lastLoginAt;
 
+    @Column(name = "password_changed", nullable = false)
+    @Builder.Default
+    private boolean passwordChanged = false;
+
     /**
      * 로그인 실패 횟수를 1 증가시킨다.
      * 5회 이상이면 계정을 잠근다.
@@ -87,6 +91,14 @@ public class User extends BaseAuditEntity {
     public void unlock() {
         this.accountLocked = false;
         this.failedLoginCount = 0;
+    }
+
+    /**
+     * 비밀번호를 변경하고 변경 완료 플래그를 설정한다.
+     */
+    public void changePassword(String encodedPassword) {
+        this.password = encodedPassword;
+        this.passwordChanged = true;
     }
 
     /**
