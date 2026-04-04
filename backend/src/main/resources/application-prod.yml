@@ -1,11 +1,51 @@
 spring:
   jpa:
     show-sql: false
+  datasource:
+    hikari:
+      maximum-pool-size: 10
+      connection-timeout: 30000
+      idle-timeout: 600000
+      keepalive-time: 300000
   session:
     jdbc:
       initialize-schema: never
+    timeout: 30m
+
+server:
+  servlet:
+    session:
+      timeout: 30m
+      cookie:
+        secure: true
+        http-only: true
+  ssl:
+    enabled: false
+    key-store: /app/certs/keystore.p12
+    key-store-password: ${SSL_KEYSTORE_PASSWORD:}
+    key-store-type: PKCS12
+  port: 8443
 
 logging:
   level:
-    com.navy.casualty: WARN
-    org.springframework: WARN
+    root: WARN
+    com.navy.casualty: INFO
+    org.springframework.security: WARN
+    org.hibernate.SQL: WARN
+    org.hibernate.type.descriptor.sql: WARN
+  file:
+    name: /app/logs/navy-casualty.log
+  logback:
+    rollingpolicy:
+      max-file-size: 50MB
+      max-history: 30
+      total-size-cap: 1GB
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: never

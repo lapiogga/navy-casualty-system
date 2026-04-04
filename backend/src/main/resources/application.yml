@@ -29,3 +29,12 @@ server:
 
 app:
   version: 1.0.0
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: never

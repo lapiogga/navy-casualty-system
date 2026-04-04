@@ -14,6 +14,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.session.SessionRegistry;
@@ -64,6 +65,13 @@ public class SecurityConfig {
                     ApiResponse<Void> body = ApiResponse.error(403, "접근 권한이 없습니다");
                     response.getWriter().write(objectMapper.writeValueAsString(body));
                 })
+            )
+            .headers(headers -> headers
+                .httpStrictTransportSecurity(hsts -> hsts
+                    .includeSubDomains(true)
+                    .maxAgeInSeconds(31536000))
+                .contentTypeOptions(Customizer.withDefaults())
+                .frameOptions(frame -> frame.deny())
             )
             .formLogin(form -> form.disable())
             .httpBasic(basic -> basic.disable());
