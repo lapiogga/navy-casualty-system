@@ -1,8 +1,11 @@
 package com.navy.casualty.auth.service;
 
+import com.navy.casualty.security.CustomUserDetails;
 import com.navy.casualty.user.entity.User;
 import com.navy.casualty.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -53,6 +56,12 @@ public class AuthService {
         }
 
         user.changePassword(passwordEncoder.encode(newPassword));
+
+        // SecurityContext의 인증 정보를 갱신하여 passwordChanged 반영
+        CustomUserDetails updated = CustomUserDetails.from(user);
+        var auth = new UsernamePasswordAuthenticationToken(
+                updated, updated.getPassword(), updated.getAuthorities());
+        SecurityContextHolder.getContext().setAuthentication(auth);
     }
 
     /**
