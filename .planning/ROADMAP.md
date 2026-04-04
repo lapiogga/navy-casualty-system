@@ -232,9 +232,21 @@ Plans:
 
 ## Phase 8: 시스템 검증 및 배포 준비
 
-**Goal:** 전체 기능 통합 검증, 성능 테스트, 군 내부망 배포 패키징을 완성한다.
+**Goal:** 전체 기능 통합 검증, 보안 점검, 성능 테스트, 군 내부망 배포 패키징을 완성한다.
 
 **Requirements:** 전 Phase 검증, INFRA-01~05 최종 확인
+
+**Plans:** 8 plans
+
+Plans:
+- [ ] 08-01-PLAN.md — 코드 품질 정리 + Flyway 마이그레이션 체인 검증 + 버전 관리 (SemVer + CHANGELOG)
+- [ ] 08-02-PLAN.md — 보안 강화 (TLS + 보안 헤더 + Actuator 제한) + 운영 프로파일 + Docker healthcheck + 부팅 검증
+- [ ] 08-03-PLAN.md — 초기 데이터 적재 (V18) + 비밀번호 변경 강제 (V19) + 데이터 검증 API
+- [ ] 08-04-PLAN.md — Excel 임포트 (사망자/상이자/심사) + 감사 로그 파티셔닝 + 월별 감사 보고서
+- [ ] 08-05-PLAN.md — 프론트엔드 최적화 (lazy route code splitting + 번들 분석 + 정적 자산 캐시)
+- [ ] 08-06-PLAN.md — 통합 테스트 7종 + Playwright E2E 3종 + OWASP ZAP + JMeter 성능 + 보안 체크리스트
+- [ ] 08-07-PLAN.md — 배포 패키징 (deploy.sh + generate-cert.sh + backup/restore.sh + package.sh + .env.example)
+- [ ] 08-08-PLAN.md — 운영 문서 (배포 절차서 + 운영자 매뉴얼 + 교육 슬라이드)
 
 **Key Deliverables:**
 - 전체 기능 E2E 통합 테스트 (핵심 시나리오 기준)
