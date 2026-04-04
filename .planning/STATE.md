@@ -2,22 +2,22 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: — 해군 사상자 관리 전산 시스템 초도 운영
-status: Ready to plan
-stopped_at: Phase 8 planned — 8 plans in 4 waves
-last_updated: "2026-04-04T01:06:25.455Z"
+status: Ready to execute
+stopped_at: Completed 08-01-PLAN.md
+last_updated: "2026-04-04T08:49:15.472Z"
 progress:
   total_phases: 8
   completed_phases: 7
   total_plans: 31
-  completed_plans: 23
+  completed_plans: 24
 ---
 
 # Execution State
 
 ## Current Position
 
-Phase: 8
-Plan: Not started
+Phase: 08 (verification-deploy) — EXECUTING
+Plan: 2 of 8
 
 ## Progress
 
@@ -82,6 +82,9 @@ Plan: Not started
 - [Phase 07]: @WebMvcTest 슬라이스 테스트로 컨트롤러 검증 (PiiEncryptionConverter 환경변수 의존 회피)
 - [Phase 07]: @ant-design/charts Column 바 차트 + Table 동일 데이터 공유 패턴 (STAT-07 중복 호출 방지)
 - [Phase 07]: dead.ts useUnits 훅 재사용으로 부대별 명부 필터 구현 (새 API 불필요)
+- [Phase 08]: V6 -> V13 rename으로 Flyway 마이그레이션 체인 정합성 확보
+- [Phase 08]: ESLint flat config에 no-unused-vars error + no-console warn 규칙 추가
+- [Phase 08]: SemVer v1.0.0 전체 컴포넌트 동기 선언 (backend/frontend/application.yml)
 
 ## Blockers
 
@@ -90,4 +93,4 @@ None
 ## Last Session
 
 - **Timestamp:** 2026-04-03T00:00:00Z
-- **Stopped At:** Phase 8 planned — 8 plans in 4 waves
+- **Stopped At:** Completed 08-01-PLAN.md

@@ -83,9 +83,9 @@
 ### 시스템 기반 (INFRA)
 
 - [x] **INFRA-01**: Docker Compose로 단일 명령 배포가 가능하다 (군 내부망 에어갭 환경)
-- [ ] **INFRA-02**: PostgreSQL 16 기반 DB 스키마가 Flyway 마이그레이션으로 관리된다
+- [x] **INFRA-02**: PostgreSQL 16 기반 DB 스키마가 Flyway 마이그레이션으로 관리된다
 - [x] **INFRA-03**: spring-session-jdbc 기반 세션 저장소를 사용한다 (JWT 미사용)
-- [ ] **INFRA-04**: 모든 외부 라이브러리 의존성이 오프라인에서 해결 가능하다 (Nexus/로컬 Maven 레포)
+- [x] **INFRA-04**: 모든 외부 라이브러리 의존성이 오프라인에서 해결 가능하다 (Nexus/로컬 Maven 레포)
 - [x] **INFRA-05**: HTTPS(TLS) 전송 암호화가 적용된다
 
 ---
