@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: — 해군 사상자 관리 전산 시스템 초도 운영
 status: Ready to execute
-stopped_at: Wave 1 complete (08-01, 08-02, 08-03)
-last_updated: "2026-04-04T09:05:00Z"
+stopped_at: Completed 08-05-PLAN.md
+last_updated: "2026-04-04T09:21:06.610Z"
 progress:
   total_phases: 8
   completed_phases: 7
   total_plans: 31
-  completed_plans: 26
+  completed_plans: 27
 ---
 
 # Execution State
@@ -17,7 +17,7 @@ progress:
 ## Current Position
 
 Phase: 08 (verification-deploy) — EXECUTING
-Plan: 3 of 8
+Plan: 4 of 8
 
 ## Progress
 
@@ -90,6 +90,8 @@ Plan: 3 of 8
 - [Phase 08]: TLS 기본 비활성화 (ssl.enabled=false) - 환경변수로 활성화 전환
 - [Phase 08]: StartupValidator 실패 시 경고 로그만 출력, 기동 차단 안 함
 - [Phase 08]: Actuator health만 노출, show-details: never
+- [Phase 08]: LoginPage/ErrorPage/NotFoundPage/AuthGuard static import 유지 (초기 로딩 필수)
+- [Phase 08]: Suspense fallback AppLayout Outlet 래핑 통합 (개별 route 래핑 불필요)
 
 ## Blockers
 
@@ -98,4 +100,4 @@ None
 ## Last Session
 
 - **Timestamp:** 2026-04-04T00:00:00Z
-- **Stopped At:** Wave 1 complete (08-01, 08-02, 08-03)
+- **Stopped At:** Completed 08-05-PLAN.md
