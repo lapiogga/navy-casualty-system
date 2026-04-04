@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: — 해군 사상자 관리 전산 시스템 초도 운영
 status: Ready to execute
-stopped_at: Completed 08-05-PLAN.md
-last_updated: "2026-04-04T09:21:06.610Z"
+stopped_at: Completed 08-04-PLAN.md
+last_updated: "2026-04-04T09:25:53.703Z"
 progress:
   total_phases: 8
   completed_phases: 7
   total_plans: 31
-  completed_plans: 27
+  completed_plans: 28
 ---
 
 # Execution State
@@ -17,7 +17,7 @@ progress:
 ## Current Position
 
 Phase: 08 (verification-deploy) — EXECUTING
-Plan: 4 of 8
+Plan: 5 of 8
 
 ## Progress
 
@@ -92,6 +92,9 @@ Plan: 4 of 8
 - [Phase 08]: Actuator health만 노출, show-details: never
 - [Phase 08]: LoginPage/ErrorPage/NotFoundPage/AuthGuard static import 유지 (초기 로딩 필수)
 - [Phase 08]: Suspense fallback AppLayout Outlet 래핑 통합 (개별 route 래핑 불필요)
+- [Phase 08]: XSSFWorkbook(DOM) + 10,000행 제한으로 OOM 방지 (StreamingReader 추가 의존성 불필요)
+- [Phase 08]: 감사 로그 파티셔닝: 복합 PK(id, created_at) 필수 (PostgreSQL 파티션 테이블 제약)
+- [Phase 08]: AuditReportService: JdbcTemplate 직접 집계로 엔티티 매핑 오버헤드 제거
 
 ## Blockers
 
@@ -100,4 +103,4 @@ None
 ## Last Session
 
 - **Timestamp:** 2026-04-04T00:00:00Z
-- **Stopped At:** Completed 08-05-PLAN.md
+- **Stopped At:** Completed 08-04-PLAN.md
